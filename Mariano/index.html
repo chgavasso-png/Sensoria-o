@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sensoriação: Sentir, Brincar e Incluir - Campanha de arrecadação de fundos e brinquedos sensoriais para crianças neurodivergentes de baixa renda.">
+    <title>Sensoriação: Sentir, Brincar e Incluir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sand': '#FFF8F3',
+                        'teal': '#00B4D8',
+                        'terra': '#FF6B35',
+                        'terra-light': '#FF8C5A',
+                        'purple-bright': '#D946EF',
+                        'blue-bright': '#3B82F6',
+                        'green-bright': '#10B981',
+                        'pink-bright': '#EC4899',
+                        'yellow-bright': '#FBBF24'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'bounce-slow': 'bounceSlow 2s ease-in-out infinite',
+                        'spin-slow': 'spinSlow 8s linear infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)' },
+                            '50%': { boxShadow: '0 0 40px rgba(255, 107, 53, 0.8)' }
+                        },
+                        bounceSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' }
+                        },
+                        spinSlow: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE5D9 50%, #FFF8F3 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00B4D8 0%, #FF6B35 50%, #D946EF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+        }
+
+        .card-premium {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-premium:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(44, 94, 107, 0.15);
+            border-color: rgba(224, 109, 83, 0.5);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        .btn-secondary {
+            border: 2px solid #00B4D8;
+            color: #00B4D8;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00B4D8;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2C5E6B;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        button:focus,
+        a:focus {
+            outline: 2px solid #2C5E6B;
+            outline-offset: 2px;
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #E06D53, transparent);
+            height: 2px;
+            margin: 60px 0;
+        }
+
+        .sponsor-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .sponsor-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .floating-button {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .image-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(44, 94, 107, 0.2);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .minigame-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 243, 0.9) 100%);
+            border: 2px solid #e5e7eb;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .minigame-btn:hover {
+            border-color: #FF6B35;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .minigame-btn.clicked {
+            animation: clickPulse 0.5s ease-out;
+        }
+
+        @keyframes clickPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(0.95); }
+        }
+
+        .game-toy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-sand text-gray-800">
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- HEADER PREMIUM -->
+    <header class="sticky top-0 z-50 bg-sand/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
+        <nav class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center" role="navigation" aria-label="Navegação Principal">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-teal to-terra flex items-center justify-center shadow-lg">
+                    <span class="text-lg sm:text-xl font-bold text-white">S</span>
+                </div>
+                <div class="hidden sm:block">
+                    <h1 class="text-sm sm:text-base font-bold bg-gradient-to-r from-teal to-terra bg-clip-text text-transparent">Sensoriação</h1>
+                    <p class="text-xs text-gray-500">Sentir, Brincar e Incluir</p>
+                </div>
+            </div>
+            <div class="flex gap-2 items-center">
+                <a href="#como-ajudar" class="text-xs sm:text-sm font-semibold text-teal hover:text-terra transition-colors px-2 sm:px-3 py-2 rounded-lg hover:bg-white">
+                    Doe
+                </a>
+                <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="px-3 sm:px-4 py-2 rounded-lg bg-gradient-to-r from-terra to-terra-light text-white text-xs sm:text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all">
+                    WApp
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- HERO SECTION PREMIUM -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+            <!-- Background decorativo -->
+            <div class="absolute inset-0 -z-10 overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-terra/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-teal/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-bright/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-20 items-center">
+                <!-- Left: Text -->
+                <div class="space-y-6 sm:space-y-8 animate-fade-in">
+                    <div class="space-y-4 sm:space-y-6">
+                        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight font-poppins">
+                            <span class="gradient-text block">Sensoriação</span>
+                            <span class="text-teal block">Sentir, Brincar<br/>e Incluir</span>
+                        </h2>
+                        <p class="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-lg font-inter font-light">
+                            Transformando o brincar em acolhimento e desenvolvimento para crianças neurodivergentes de baixa renda no Dia das Crianças.
+                        </p>
+                    </div>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
+                        <a href="#como-ajudar" class="btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white font-semibold text-center text-base sm:text-lg transition-all duration-300">
+                            Quero Doar via PIX
+                        </a>
+                        <a href="#projeto" class="btn-secondary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-center text-base sm:text-lg transition-all duration-300">
+                            Saiba Mais
+                        </a>
+                    </div>
+
+                    <!-- Trust -->
+                    <div class="flex items-center gap-2 sm:gap-3 text-gray-700 font-medium text-sm sm:text-base">
+                        <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-terra/20 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-terra" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <span>100% vai direto para as crianças</span>
+                    </div>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="relative h-64 sm:h-80 lg:h-[500px]">
+                    <div class="image-frame h-full">
+                        <img src="pics/3.jpeg" alt="Crianças neurodivergentes brincando inclusivamente com mãos unidas" class="hero-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE O PROJETO -->
+        <section id="projeto" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white/60 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 sm:mb-20">
+                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-teal mb-4 sm:mb-6 font-poppins">
+                        Por Que <span class="gradient-text">Importa?</span>
+                    </h2>
+                    <p class="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto font-inter font-light">
+                        Entenda o impacto real da neurodiversidade e como sua doação transforma vidas
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="card-premium p-8 rounded-2xl group border-l-4 border-terra">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-terra to-orange-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-terra mb-4 font-poppins">O Desafio</h3>
+                        <p class="text-gray-700 leading-relaxed font-inter font-light">
+                            A neurodiversidade não escolhe classe social. Brinquedos sensoriais têm custo elevado para famílias carentes.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card-premium p-8 rounded-2xl group border-l-4 border-teal">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal to-blue-bright flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-teal mb-4 font-poppins">A Solução</h3>
+                        <p class="text-gray-700 leading-relaxed font-inter font-light">
+                            Brinquedos sensoriais ajudam na regulação emocional, foco e prevenção de crises. Educação inclusiva começa no brincar.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card-premium p-8 rounded-2xl group border-l-4 border-green-bright">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-bright to-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-bright mb-4 font-poppins">A Entrega</h3>
+                        <p class="text-gray-700 leading-relaxed font-inter font-light">
+                            Entregamos para crianças selecionadas por equipe multidisciplinar. Cada doação faz diferença real.
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- BRINQUEDOS SENSORIAIS -->
+        <section id="brinquedos" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            <!-- Background decorativo -->
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute top-1/2 left-0 w-96 h-96 bg-teal/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-terra/10 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 sm:mb-20">
+                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-teal mb-4 sm:mb-6 font-poppins">
+                        O Que <span class="gradient-text">Arrecadamos</span>
+                    </h2>
+                    <p class="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto font-inter font-light">
+                        Conheça os brinquedos sensoriais que transformam o desenvolvimento
+                    </p>
+                </div>
+
+                <!-- Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Item 1 -->
+                    <div class="card-premium p-8 rounded-2xl text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-terra to-yellow-bright flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-terra mb-3 font-poppins">Fidget Toys</h3>
+                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Brinquedos de pressão que melhoram concentração e reduzem ansiedade</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-terra/20 text-terra text-xs font-semibold">Popular</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="card-premium p-8 rounded-2xl text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-teal to-blue-bright flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow" style="animation-delay: 0.3s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal mb-3 font-poppins">Massinhas</h3>
+                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Areia cinética estimula motricidade e promove relaxamento</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-teal/20 text-teal text-xs font-semibold">Relaxante</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="card-premium p-8 rounded-2xl text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-green-bright to-emerald-400 flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow" style="animation-delay: 0.6s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-2.96-3.83c-.3-.4-.93-.5-1.3-.23-.4.29-.5.84-.23 1.3l3.98 5.15c.25.33.62.52 1.02.52s.77-.19 1.02-.52l4.25-5.45c.27-.42.14-.98-.28-1.25-.42-.27-.98-.14-1.25.28L13.96 12.29z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-bright mb-3 font-poppins">Cubos Mágicos</h3>
+                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Quebra-cabeças 3D estimulam resolução e raciocínio</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-green-bright/20 text-green-bright text-xs font-semibold">Desafio</span>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="card-premium p-8 rounded-2xl text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-bright to-pink-bright flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow" style="animation-delay: 0.9s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-bright mb-3 font-poppins">Texturas</h3>
+                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Mordedores estimulam tato e propriocepção de forma segura</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-bright/20 text-purple-bright text-xs font-semibold">Seguro</span>
+                    </div>
+                </div>
+
+                <!-- Info Box -->
+                <div class="mt-20 p-8 sm:p-12 rounded-2xl card-premium border-l-4 border-terra">
+                    <p class="text-center text-lg text-gray-700 font-inter">
+                        <span class="font-bold text-teal">✓ Todos os brinquedos são selecionados por terapeutas ocupacionais</span><br/>
+                        <span class="text-gray-600 mt-2 block font-light">Para garantir segurança, eficácia e inclusão de todas as crianças com diferentes necessidades sensoriais.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MINIJOGO INTERATIVO -->
+        <section id="minigame" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-bright/10 via-pink-bright/10 to-terra/10">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold gradient-text mb-4 font-poppins">
+                        Jogue e Doe! 🎮
+                    </h2>
+                    <p class="text-gray-700 font-inter font-light text-lg">
+                        Clique nos brinquedos para coletar e veja quanto você ajuda!
+                    </p>
+                </div>
+
+                <!-- Game Container -->
+                <div class="card-premium p-8 rounded-3xl">
+                    <div class="text-center mb-8">
+                        <p class="text-gray-600 font-inter font-light mb-2">Brinquedos Coletados:</p>
+                        <div class="text-5xl font-bold gradient-text font-poppins" id="toy-count">0</div>
+                        <p class="text-gray-600 font-inter font-light text-sm mt-2">Clique nos brinquedos abaixo!</p>
+                    </div>
+
+                    <!-- Game Board -->
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-8">
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="1">
+                            <div class="text-4xl mb-2">🎯</div>
+                            <span class="text-xs font-inter font-light">Fidget</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="2">
+                            <div class="text-4xl mb-2">🧠</div>
+                            <span class="text-xs font-inter font-light">Cubo</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="3">
+                            <div class="text-4xl mb-2">✨</div>
+                            <span class="text-xs font-inter font-light">Textura</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="4">
+                            <div class="text-4xl mb-2">🎪</div>
+                            <span class="text-xs font-inter font-light">Pop-it</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="5">
+                            <div class="text-4xl mb-2">🌈</div>
+                            <span class="text-xs font-inter font-light">Areia</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="6">
+                            <div class="text-4xl mb-2">🧩</div>
+                            <span class="text-xs font-inter font-light">Quebra</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="7">
+                            <div class="text-4xl mb-2">💫</div>
+                            <span class="text-xs font-inter font-light">Mordedor</span>
+                        </button>
+                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="8">
+                            <div class="text-4xl mb-2">🎨</div>
+                            <span class="text-xs font-inter font-light">Massinha</span>
+                        </button>
+                    </div>
+
+                    <!-- Reward Message -->
+                    <div id="reward-message" class="text-center mt-8 hidden">
+                        <p class="text-2xl font-bold gradient-text font-poppins mb-4">
+                            🎉 Parabéns! Você ajudou a montar <span id="reward-count">0</span> kits!
+                        </p>
+                        <p class="text-gray-700 font-inter font-light">
+                            Agora clique no botão abaixo para fazer sua doação real e transformar vidas!
+                        </p>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center mt-8">
+                        <a href="#como-ajudar" class="btn-primary px-8 py-4 rounded-xl text-white font-bold text-lg inline-block transition-all">
+                            Continuar Doação →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE DOAÇÃO -->
+        <section id="como-ajudar" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-terra/10 via-purple-bright/10 to-teal/10">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-5xl sm:text-6xl font-bold text-teal mb-6 font-poppins">
+                        Como <span class="gradient-text">Ajudar</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto font-inter font-light">
+                        Escolha sua forma de contribuir e transforme vidas
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+                    <!-- PIX Box -->
+                    <div class="card-premium p-6 sm:p-10 lg:p-12 rounded-3xl border-2 border-terra/20 group">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-terra/20 to-terra/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-7 h-7 text-terra" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-3xl font-bold text-teal font-poppins">Doação via PIX</h3>
+                        </div>
+
+                        <p class="text-gray-700 mb-8 font-inter font-light leading-relaxed text-lg">
+                            <span class="font-bold text-teal">100% do valor</span> vira brinquedo sensorial. Rápido, seguro e sem taxas.
+                        </p>
+
+                        <!-- PIX Key -->
+                        <div class="bg-white rounded-2xl p-6 mb-8 border border-terra/20">
+                            <p class="text-sm text-gray-600 font-semibold mb-3 font-inter">Chave PIX:</p>
+                            <div class="flex gap-2">
+                                <code class="flex-1 px-4 py-3 bg-sand rounded-lg text-sm font-mono text-teal font-semibold select-all" id="pix-key">
+                                    sensoriacao@piracicaba.org.br
+                                </code>
+                                <button id="copy-pix-btn" onclick="copyPixKey()" class="btn-primary px-6 py-3 rounded-lg text-white font-bold text-sm whitespace-nowrap hover:shadow-xl transition-all">
+                                    Copiar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- QR Code -->
+                        <div class="bg-gradient-to-br from-sand to-white rounded-2xl p-8 flex flex-col items-center justify-center mb-8">
+                            <div class="w-48 h-48 bg-white rounded-xl border-4 border-teal flex items-center justify-center">
+                                <img src="pics/4.jpeg" alt="QR Code PIX" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <p class="text-center text-gray-700 mt-6 font-inter font-light">
+                                Escaneie com seu celular e doe agora
+                            </p>
+                        </div>
+
+                        <!-- Values -->
+                        <p class="text-sm text-gray-600 font-semibold mb-4 font-inter">Valores sugeridos:</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-terra/20 to-terra/10 hover:from-terra/30 hover:to-terra/20 text-terra font-bold text-sm transition-all">R$ 50</button>
+                            <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-teal/20 to-teal/10 hover:from-teal/30 hover:to-teal/20 text-teal font-bold text-sm transition-all">R$ 100</button>
+                            <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-green-soft/20 to-green-soft/10 hover:from-green-soft/30 hover:to-green-soft/20 text-green-soft font-bold text-sm transition-all">R$ 200</button>
+                            <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-purple-soft/20 to-purple-soft/10 hover:from-purple-soft/30 hover:to-purple-soft/20 text-purple-soft font-bold text-sm transition-all">Outro</button>
+                        </div>
+                    </div>
+
+                    <!-- Entrega Física -->
+                    <div class="card-premium p-6 sm:p-10 lg:p-12 rounded-3xl border-2 border-teal/20 group">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal/20 to-teal/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-7 h-7 text-teal" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-3xl font-bold text-teal font-poppins">Entrega Local</h3>
+                        </div>
+
+                        <p class="text-gray-700 mb-8 font-inter font-light leading-relaxed text-lg">
+                            Prefere entregar brinquedos? Visite nossos pontos de coleta.
+                        </p>
+
+                        <!-- Local 1 -->
+                        <div class="bg-white rounded-2xl p-6 mb-6 border border-teal/20">
+                            <h4 class="font-bold text-teal text-lg mb-4 flex items-center gap-2 font-poppins">
+                                <svg class="w-5 h-5 text-terra" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                CRP - Piracicaba
+                            </h4>
+                            <p class="text-gray-700 text-sm mb-2 font-inter font-light">
+                                <span class="font-bold">Endereço:</span><br/>
+                                Rua [INSERIR ENDEREÇO]
+                            </p>
+                            <p class="text-gray-700 text-sm font-inter font-light">
+                                <span class="font-bold">Horário:</span><br/>
+                                Seg-Sex 8h às 17h
+                            </p>
+                        </div>
+
+                        <!-- Local 2 -->
+                        <div class="bg-white rounded-2xl p-6 mb-6 border border-teal/20">
+                            <h4 class="font-bold text-teal text-lg mb-4 flex items-center gap-2 font-poppins">
+                                <svg class="w-5 h-5 text-terra" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                Ponto de Coleta
+                            </h4>
+                            <p class="text-gray-700 text-sm mb-2 font-inter font-light">
+                                <span class="font-bold">Endereço:</span><br/>
+                                Rua [INSERIR ENDEREÇO SECUNDÁRIO]
+                            </p>
+                            <p class="text-gray-700 text-sm font-inter font-light">
+                                <span class="font-bold">Horário:</span><br/>
+                                Sábados 10h às 14h
+                            </p>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-4 rounded-xl bg-teal/5 border border-teal/20">
+                            <p class="text-sm text-gray-700 font-inter font-light">
+                                <span class="font-bold text-teal">✓ Brinquedos novos</span> em embalagem original. Verificamos qualidade e segurança juntos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE PATROCINADORES -->
+        <section id="patrocinadores" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-bright/5 to-yellow-bright/5 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl sm:text-6xl font-bold text-teal mb-6 font-poppins">
+                        Nossos <span class="gradient-text">Patrocinadores</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto font-inter font-light">
+                        Agradecemos aos parceiros que acreditam nesta causa e transformam sonhos em realidade
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Sponsor 1 -->
+                    <div class="sponsor-card">
+                        <div class="w-full h-32 bg-gradient-to-br from-terra/10 to-terra/5 rounded-lg flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <p class="text-sm font-bold text-terra font-poppins">Sponsor</p>
+                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
+                    </div>
+
+                    <!-- Sponsor 2 -->
+                    <div class="sponsor-card">
+                        <div class="w-full h-32 bg-gradient-to-br from-teal/10 to-teal/5 rounded-lg flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <p class="text-sm font-bold text-teal font-poppins">Sponsor</p>
+                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
+                    </div>
+
+                    <!-- Sponsor 3 -->
+                    <div class="sponsor-card">
+                        <div class="w-full h-32 bg-gradient-to-br from-green-soft/10 to-green-soft/5 rounded-lg flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <p class="text-sm font-bold text-green-soft font-poppins">Sponsor</p>
+                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
+                    </div>
+
+                    <!-- Sponsor 4 -->
+                    <div class="sponsor-card">
+                        <div class="w-full h-32 bg-gradient-to-br from-purple-soft/10 to-purple-soft/5 rounded-lg flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <p class="text-sm font-bold text-purple-soft font-poppins">Sponsor</p>
+                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
+                    </div>
+                </div>
+
+                <!-- CTA Sponsor -->
+                <div class="mt-16 p-10 rounded-2xl card-premium text-center">
+                    <p class="text-lg text-gray-700 mb-6 font-inter font-light">
+                        <span class="font-bold text-teal">Sua empresa quer patrocinar este projeto?</span><br/>
+                        Entre em contato conosco pelo WhatsApp
+                    </p>
+                    <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold inline-block transition-all">
+                        Seja um Parceiro
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER PREMIUM -->
+        <footer class="bg-gradient-to-b from-teal via-blue-bright to-purple-bright text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" role="contentinfo">
+            <!-- Background decorativo -->
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-terra/20 rounded-full blur-3xl"></div>
+                <div class="absolute top-0 left-0 w-96 h-96 bg-pink-bright/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                    <!-- About -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-terra flex items-center justify-center">
+                                <span class="text-lg font-bold text-teal">S</span>
+                            </div>
+                            <h3 class="text-2xl font-bold font-poppins">Sensoriação</h3>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed font-inter font-light">
+                            Uma iniciativa do Centro de Reabilitação de Piracicaba para incluir, acolher e transformar vidas através do brincar sensorial.
+                        </p>
+                    </div>
+
+                    <!-- Links -->
+                    <div>
+                        <h4 class="text-lg font-bold mb-6 font-poppins">Links Rápidos</h4>
+                        <ul class="space-y-3 text-sm font-inter font-light">
+                            <li><a href="#hero" class="text-white/80 hover:text-terra transition-colors">Topo</a></li>
+                            <li><a href="#projeto" class="text-white/80 hover:text-terra transition-colors">O Projeto</a></li>
+                            <li><a href="#brinquedos" class="text-white/80 hover:text-terra transition-colors">Brinquedos</a></li>
+                            <li><a href="#como-ajudar" class="text-white/80 hover:text-terra transition-colors">Como Ajudar</a></li>
+                            <li><a href="#patrocinadores" class="text-white/80 hover:text-terra transition-colors">Patrocinadores</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contato -->
+                    <div>
+                        <h4 class="text-lg font-bold mb-6 font-poppins">Entre em Contato</h4>
+                        <div class="space-y-4 text-sm font-inter font-light">
+                            <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/80 hover:text-terra transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.346 0-2.67-.33-3.816-.95l-.274-.16-.283.09C6.412 5.859 5.84 7.468 5.84 9.076c0 4.081 3.32 7.39 7.405 7.39c1.775 0 3.453-.681 4.71-1.91l.223-.22-.303.037c-.15.02-.636.129-1.035.129-.473 0-.758-.074-.995-.127-.766-.168-1.186-.557-1.448-.896l-.148-.19-.152.134c-.347.307-.905.506-1.502.506-.953 0-1.774-.601-2.098-1.461l-.08-.215-.217.03c-.224.031-.636.092-.636.092-.319.042-.64-.121-.682-.463-.042-.341.237-.64.577-.682.167-.02.535-.066.882-.092.433-.033.838-.137 1.2-.306l.265-.134.096-.301c.129-.401.359-1.073.359-1.073.1-.327.02-.63-.22-.833-.243-.204-.617-.16-.774-.16s-.444.025-.568.041l-.141.022-.037.068c-.042.079-.118.224-.199.383l-.026.047-.108.186c-.065.113-.137.236-.185.317l-.05.085.044.002c.08.004.2.008.2.008.117 0 .235 0 .352-.004l.316-.016.055-.081c.078-.113.22-.319.363-.53.143-.21.29-.427.362-.555.134-.229.242-.425.268-.537.03-.132.015-.287-.025-.392-.041-.103-.14-.159-.269-.159h-.456c-.075 0-.158.008-.237.027l-.093.02-.026.065c-.016.04-.096.243-.232.58l-.026.064.01.04c.018.066.063.23.063.23z"/>
+                                </svg>
+                                WhatsApp
+                            </a>
+                            <p class="text-white/80">
+                                <span class="font-semibold">Email:</span><br/>
+                                sensoriacao@piracicaba.org.br
+                            </p>
+                            <p class="text-white/80">
+                                <span class="font-semibold">Período:</span><br/>
+                                05 a 12 de Outubro
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-white/20 pt-8 mb-8">
+                    <!-- Transparência -->
+                    <div class="p-6 rounded-xl bg-white/10 backdrop-blur border border-white/20 mb-8">
+                        <p class="text-sm font-semibold mb-2 font-poppins">✓ Compromisso com Transparência</p>
+                        <p class="text-xs text-white/80 leading-relaxed font-inter font-light">
+                            Toda doação é documentada e acompanhada. Em novembro, divulgaremos relatório completo com fotos dos kits e beneficiários. Nenhuma doação é desperdiçada. 100% vai para as crianças.
+                        </p>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
+                        <p class="font-inter font-light">
+                            &copy; 2024 Centro de Reabilitação de Piracicaba. Todos os direitos reservados a <span class="font-semibold text-white">Carlos Gavasso</span>.
+                        </p>
+                        <div class="flex gap-6">
+                            <a href="#" class="hover:text-terra transition-colors font-inter font-light">Privacidade</a>
+                            <a href="#" class="hover:text-terra transition-colors font-inter font-light">Termos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="floating-button fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-terra to-terra-light rounded-full flex items-center justify-center shadow-2xl hover:shadow-xl transform transition-all hover:scale-110 z-40" title="Fale conosco no WhatsApp" aria-label="Abrir WhatsApp">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.346 0-2.67-.33-3.816-.95l-.274-.16-.283.09C6.412 5.859 5.84 7.468 5.84 9.076c0 4.081 3.32 7.39 7.405 7.39c1.775 0 3.453-.681 4.71-1.91l.223-.22-.303.037c-.15.02-.636.129-1.035.129-.473 0-.758-.074-.995-.127-.766-.168-1.186-.557-1.448-.896l-.148-.19-.152.134c-.347.307-.905.506-1.502.506-.953 0-1.774-.601-2.098-1.461l-.08-.215-.217.03c-.224.031-.636.092-.636.092-.319.042-.64-.121-.682-.463-.042-.341.237-.64.577-.682.167-.02.535-.066.882-.092.433-.033.838-.137 1.2-.306l.265-.134.096-.301c.129-.401.359-1.073.359-1.073.1-.327.02-.63-.22-.833-.243-.204-.617-.16-.774-.16s-.444.025-.568.041l-.141.022-.037.068c-.042.079-.118.224-.199.383l-.026.047-.108.186c-.065.113-.137.236-.185.317l-.05.085.044.002c.08.004.2.008.2.008.117 0 .235 0 .352-.004l.316-.016.055-.081c.078-.113.22-.319.363-.53.143-.21.29-.427.362-.555.134-.229.242-.425.268-.537.03-.132.015-.287-.025-.392-.041-.103-.14-.159-.269-.159h-.456c-.075 0-.158.008-.237.027l-.093.02-.026.065c-.016.04-.096.243-.232.58l-.026.064.01.04c.018.066.063.23.063.23z"/>
+            </svg>
+        </a>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        function copyPixKey() {
+            const pixKey = document.getElementById('pix-key').textContent;
+            navigator.clipboard.writeText(pixKey).then(() => {
+                const btn = document.getElementById('copy-pix-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copiado! ✓';
+                btn.classList.add('bg-green-500');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('bg-green-500');
+                }, 2000);
+            }).catch(() => {
+                alert('Erro ao copiar. Tente novamente.');
+            });
+        }
+
+        // Smooth scroll para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // Animação ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-premium, .sponsor-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Minijogo
+        let toyCount = 0;
+        const maxToys = 20;
+
+        document.querySelectorAll('.game-toy').forEach(btn => {
+            btn.addEventListener('click', function() {
+                toyCount++;
+                
+                // Update counter
+                document.getElementById('toy-count').textContent = toyCount;
+
+                // Pulse effect
+                this.classList.add('clicked');
+                setTimeout(() => this.classList.remove('clicked'), 500);
+
+                // Floating animation
+                const floatingElement = document.createElement('div');
+                floatingElement.textContent = '💝';
+                floatingElement.style.position = 'fixed';
+                floatingElement.style.left = this.getBoundingClientRect().left + 'px';
+                floatingElement.style.top = this.getBoundingClientRect().top + 'px';
+                floatingElement.style.fontSize = '24px';
+                floatingElement.style.pointerEvents = 'none';
+                floatingElement.style.zIndex = '1000';
+                floatingElement.style.animation = 'float-up 1s ease-out forwards';
+                document.body.appendChild(floatingElement);
+
+                setTimeout(() => floatingElement.remove(), 1000);
+
+                // Show reward message
+                if (toyCount >= maxToys) {
+                    document.getElementById('reward-message').classList.remove('hidden');
+                    document.getElementById('reward-count').textContent = Math.floor(toyCount / maxToys);
+                }
+            });
+        });
+
+        // Add float-up animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(0.5);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
