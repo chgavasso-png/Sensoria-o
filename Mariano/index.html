@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sensoriação: Sentir, Brincar e Incluir - Campanha de arrecadação de fundos e brinquedos sensoriais para crianças neurodivergentes de baixa renda.">
-    <title>Sensoriação: Sentir, Brincar e Incluir</title>
+    <meta name="description" content="Campanha SensoriAÇÃO: sentir, brincar e incluir - Arrecadação de brinquedos sensoriais para crianças neurodivergentes do CRP.">
+    <title>Campanha SensoriAÇÃO</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Configuração do Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -17,898 +23,453 @@
                         'sand': '#FFF8F3',
                         'teal': '#00B4D8',
                         'terra': '#FF6B35',
-                        'terra-light': '#FF8C5A',
                         'purple-bright': '#D946EF',
-                        'blue-bright': '#3B82F6',
                         'green-bright': '#10B981',
-                        'pink-bright': '#EC4899',
-                        'yellow-bright': '#FBBF24'
                     },
                     fontFamily: {
                         'poppins': ['Poppins', 'sans-serif'],
                         'inter': ['Inter', 'sans-serif']
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
-                        'bounce-slow': 'bounceSlow 2s ease-in-out infinite',
-                        'spin-slow': 'spinSlow 8s linear infinite'
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' }
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)' },
-                            '50%': { boxShadow: '0 0 40px rgba(255, 107, 53, 0.8)' }
-                        },
-                        bounceSlow: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' }
-                        },
-                        spinSlow: {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' }
-                        }
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: linear-gradient(135deg, #FFF8F3 0%, #FFE5D9 50%, #FFF8F3 100%);
-        }
-
+        html { scroll-behavior: smooth; }
+        body { background: linear-gradient(135deg, #FFF8F3 0%, #FFE5D9 50%, #FFF8F3 100%); }
+        
         .gradient-text {
             background: linear-gradient(135deg, #00B4D8 0%, #FF6B35 50%, #D946EF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
         }
 
         .card-premium {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.9);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
         }
-
         .card-premium:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(44, 94, 107, 0.15);
-            border-color: rgba(224, 109, 83, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(44, 94, 107, 0.1);
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
             transition: all 0.3s ease;
         }
-
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
         }
 
         .btn-secondary {
             border: 2px solid #00B4D8;
             color: #00B4D8;
-            background: transparent;
             transition: all 0.3s ease;
         }
-
         .btn-secondary:hover {
             background: #00B4D8;
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
-
-        .hero-image {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #2C5E6B;
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        button:focus,
-        a:focus {
-            outline: 2px solid #2C5E6B;
-            outline-offset: 2px;
-        }
-
-        .section-divider {
-            background: linear-gradient(90deg, transparent, #E06D53, transparent);
-            height: 2px;
-            margin: 60px 0;
-        }
-
-        .sponsor-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
-        }
-
-        .sponsor-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .floating-button {
-            animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        .image-frame {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(44, 94, 107, 0.2);
-        }
-
-        .image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .image-frame:hover img {
-            transform: scale(1.05);
-        }
-
-        .minigame-btn {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 243, 0.9) 100%);
-            border: 2px solid #e5e7eb;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .minigame-btn:hover {
-            border-color: #FF6B35;
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
-        }
-
-        .minigame-btn.clicked {
-            animation: clickPulse 0.5s ease-out;
-        }
-
-        @keyframes clickPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(0.95); }
-        }
-
-        .game-toy {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+        
+        .progress-bar-bg { background-color: #f3f4f6; }
+        .progress-bar-fill { height: 100%; border-radius: 9999px; transition: width 1s ease-in-out; }
     </style>
 </head>
-<body class="bg-sand text-gray-800">
-    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+<body class="font-inter text-gray-800 antialiased pt-20 sm:pt-24">
 
-    <!-- HEADER PREMIUM -->
-    <header class="sticky top-0 z-50 bg-sand/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
-        <nav class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center" role="navigation" aria-label="Navegação Principal">
-            <div class="flex items-center gap-2 sm:gap-3">
-                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-teal to-terra flex items-center justify-center shadow-lg">
-                    <span class="text-lg sm:text-xl font-bold text-white">S</span>
-                </div>
-                <div class="hidden sm:block">
-                    <h1 class="text-sm sm:text-base font-bold bg-gradient-to-r from-teal to-terra bg-clip-text text-transparent">Sensoriação</h1>
-                    <p class="text-xs text-gray-500">Sentir, Brincar e Incluir</p>
-                </div>
-            </div>
-            <div class="flex gap-2 items-center">
-                <a href="#como-ajudar" class="text-xs sm:text-sm font-semibold text-teal hover:text-terra transition-colors px-2 sm:px-3 py-2 rounded-lg hover:bg-white">
-                    Doe
-                </a>
-                <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="px-3 sm:px-4 py-2 rounded-lg bg-gradient-to-r from-terra to-terra-light text-white text-xs sm:text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all">
-                    WApp
-                </a>
-            </div>
-        </nav>
-    </header>
-
-    <main id="main-content">
-        <!-- HERO SECTION PREMIUM -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-            <!-- Background decorativo -->
-            <div class="absolute inset-0 -z-10 overflow-hidden">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-terra/20 rounded-full blur-3xl animate-pulse"></div>
-                <div class="absolute bottom-0 left-0 w-96 h-96 bg-teal/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-                <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-bright/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-            </div>
-
-            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-20 items-center">
-                <!-- Left: Text -->
-                <div class="space-y-6 sm:space-y-8 animate-fade-in">
-                    <div class="space-y-4 sm:space-y-6">
-                        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight font-poppins">
-                            <span class="gradient-text block">Sensoriação</span>
-                            <span class="text-teal block">Sentir, Brincar<br/>e Incluir</span>
-                        </h2>
-                        <p class="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-lg font-inter font-light">
-                            Transformando o brincar em acolhimento e desenvolvimento para crianças neurodivergentes de baixa renda no Dia das Crianças.
-                        </p>
+    <!-- HEADER MODERNO FLUTUANTE -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pb-2 sm:px-6 lg:px-8 pointer-events-none">
+        <div class="max-w-7xl mx-auto pointer-events-auto">
+            <nav class="bg-white/85 backdrop-blur-lg border border-white shadow-lg rounded-2xl px-4 py-3 flex justify-between items-center transition-all">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal to-terra flex items-center justify-center shadow-md flex-shrink-0">
+                        <span class="text-xl font-bold font-poppins text-white">S</span>
                     </div>
-
-                    <!-- CTAs -->
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
-                        <a href="#como-ajudar" class="btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white font-semibold text-center text-base sm:text-lg transition-all duration-300">
-                            Quero Doar via PIX
-                        </a>
-                        <a href="#projeto" class="btn-secondary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-center text-base sm:text-lg transition-all duration-300">
-                            Saiba Mais
-                        </a>
-                    </div>
-
-                    <!-- Trust -->
-                    <div class="flex items-center gap-2 sm:gap-3 text-gray-700 font-medium text-sm sm:text-base">
-                        <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-terra/20 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-terra" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <span>100% vai direto para as crianças</span>
+                    <div class="flex flex-col justify-center">
+                        <h1 class="text-sm sm:text-base font-bold font-poppins text-teal leading-tight">Campanha SensoriAÇÃO</h1>
+                        <p class="text-[10px] sm:text-xs text-gray-500 font-medium leading-tight">sentir, brincar e incluir</p>
                     </div>
                 </div>
-
-                <!-- Right: Image -->
-                <div class="relative h-64 sm:h-80 lg:h-[500px]">
-                    <div class="image-frame h-full">
-                        <img src="pics/3.jpeg" alt="Crianças neurodivergentes brincando inclusivamente com mãos unidas" class="hero-image">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SOBRE O PROJETO -->
-        <section id="projeto" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white/60 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-12 sm:mb-20">
-                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-teal mb-4 sm:mb-6 font-poppins">
-                        Por Que <span class="gradient-text">Importa?</span>
-                    </h2>
-                    <p class="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto font-inter font-light">
-                        Entenda o impacto real da neurodiversidade e como sua doação transforma vidas
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
-                    <div class="card-premium p-8 rounded-2xl group border-l-4 border-terra">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-terra to-orange-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-terra mb-4 font-poppins">O Desafio</h3>
-                        <p class="text-gray-700 leading-relaxed font-inter font-light">
-                            A neurodiversidade não escolhe classe social. Brinquedos sensoriais têm custo elevado para famílias carentes.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="card-premium p-8 rounded-2xl group border-l-4 border-teal">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal to-blue-bright flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-teal mb-4 font-poppins">A Solução</h3>
-                        <p class="text-gray-700 leading-relaxed font-inter font-light">
-                            Brinquedos sensoriais ajudam na regulação emocional, foco e prevenção de crises. Educação inclusiva começa no brincar.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="card-premium p-8 rounded-2xl group border-l-4 border-green-bright">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-bright to-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-green-bright mb-4 font-poppins">A Entrega</h3>
-                        <p class="text-gray-700 leading-relaxed font-inter font-light">
-                            Entregamos para crianças selecionadas por equipe multidisciplinar. Cada doação faz diferença real.
-                        </p>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- BRINQUEDOS SENSORIAIS -->
-        <section id="brinquedos" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-            <!-- Background decorativo -->
-            <div class="absolute inset-0 -z-10">
-                <div class="absolute top-1/2 left-0 w-96 h-96 bg-teal/10 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 right-0 w-96 h-96 bg-terra/10 rounded-full blur-3xl"></div>
-            </div>
-
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-12 sm:mb-20">
-                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-teal mb-4 sm:mb-6 font-poppins">
-                        O Que <span class="gradient-text">Arrecadamos</span>
-                    </h2>
-                    <p class="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto font-inter font-light">
-                        Conheça os brinquedos sensoriais que transformam o desenvolvimento
-                    </p>
-                </div>
-
-                <!-- Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Item 1 -->
-                    <div class="card-premium p-8 rounded-2xl text-center group">
-                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-terra to-yellow-bright flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-terra mb-3 font-poppins">Fidget Toys</h3>
-                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Brinquedos de pressão que melhoram concentração e reduzem ansiedade</p>
-                        <span class="inline-block px-3 py-1 rounded-full bg-terra/20 text-terra text-xs font-semibold">Popular</span>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="card-premium p-8 rounded-2xl text-center group">
-                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-teal to-blue-bright flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow" style="animation-delay: 0.3s;">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-teal mb-3 font-poppins">Massinhas</h3>
-                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Areia cinética estimula motricidade e promove relaxamento</p>
-                        <span class="inline-block px-3 py-1 rounded-full bg-teal/20 text-teal text-xs font-semibold">Relaxante</span>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="card-premium p-8 rounded-2xl text-center group">
-                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-green-bright to-emerald-400 flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow" style="animation-delay: 0.6s;">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-2.96-3.83c-.3-.4-.93-.5-1.3-.23-.4.29-.5.84-.23 1.3l3.98 5.15c.25.33.62.52 1.02.52s.77-.19 1.02-.52l4.25-5.45c.27-.42.14-.98-.28-1.25-.42-.27-.98-.14-1.25.28L13.96 12.29z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-green-bright mb-3 font-poppins">Cubos Mágicos</h3>
-                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Quebra-cabeças 3D estimulam resolução e raciocínio</p>
-                        <span class="inline-block px-3 py-1 rounded-full bg-green-bright/20 text-green-bright text-xs font-semibold">Desafio</span>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="card-premium p-8 rounded-2xl text-center group">
-                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-bright to-pink-bright flex items-center justify-center group-hover:scale-120 transition-transform animate-bounce-slow" style="animation-delay: 0.9s;">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-purple-bright mb-3 font-poppins">Texturas</h3>
-                        <p class="text-sm text-gray-600 mb-4 font-inter font-light">Mordedores estimulam tato e propriocepção de forma segura</p>
-                        <span class="inline-block px-3 py-1 rounded-full bg-purple-bright/20 text-purple-bright text-xs font-semibold">Seguro</span>
-                    </div>
-                </div>
-
-                <!-- Info Box -->
-                <div class="mt-20 p-8 sm:p-12 rounded-2xl card-premium border-l-4 border-terra">
-                    <p class="text-center text-lg text-gray-700 font-inter">
-                        <span class="font-bold text-teal">✓ Todos os brinquedos são selecionados por terapeutas ocupacionais</span><br/>
-                        <span class="text-gray-600 mt-2 block font-light">Para garantir segurança, eficácia e inclusão de todas as crianças com diferentes necessidades sensoriais.</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- MINIJOGO INTERATIVO -->
-        <section id="minigame" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-bright/10 via-pink-bright/10 to-terra/10">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl sm:text-5xl font-bold gradient-text mb-4 font-poppins">
-                        Jogue e Doe! 🎮
-                    </h2>
-                    <p class="text-gray-700 font-inter font-light text-lg">
-                        Clique nos brinquedos para coletar e veja quanto você ajuda!
-                    </p>
-                </div>
-
-                <!-- Game Container -->
-                <div class="card-premium p-8 rounded-3xl">
-                    <div class="text-center mb-8">
-                        <p class="text-gray-600 font-inter font-light mb-2">Brinquedos Coletados:</p>
-                        <div class="text-5xl font-bold gradient-text font-poppins" id="toy-count">0</div>
-                        <p class="text-gray-600 font-inter font-light text-sm mt-2">Clique nos brinquedos abaixo!</p>
-                    </div>
-
-                    <!-- Game Board -->
-                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-8">
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="1">
-                            <div class="text-4xl mb-2">🎯</div>
-                            <span class="text-xs font-inter font-light">Fidget</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="2">
-                            <div class="text-4xl mb-2">🧠</div>
-                            <span class="text-xs font-inter font-light">Cubo</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="3">
-                            <div class="text-4xl mb-2">✨</div>
-                            <span class="text-xs font-inter font-light">Textura</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="4">
-                            <div class="text-4xl mb-2">🎪</div>
-                            <span class="text-xs font-inter font-light">Pop-it</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="5">
-                            <div class="text-4xl mb-2">🌈</div>
-                            <span class="text-xs font-inter font-light">Areia</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="6">
-                            <div class="text-4xl mb-2">🧩</div>
-                            <span class="text-xs font-inter font-light">Quebra</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="7">
-                            <div class="text-4xl mb-2">💫</div>
-                            <span class="text-xs font-inter font-light">Mordedor</span>
-                        </button>
-                        <button class="minigame-btn game-toy p-4 rounded-xl transition-all transform hover:scale-110" data-toy="8">
-                            <div class="text-4xl mb-2">🎨</div>
-                            <span class="text-xs font-inter font-light">Massinha</span>
-                        </button>
-                    </div>
-
-                    <!-- Reward Message -->
-                    <div id="reward-message" class="text-center mt-8 hidden">
-                        <p class="text-2xl font-bold gradient-text font-poppins mb-4">
-                            🎉 Parabéns! Você ajudou a montar <span id="reward-count">0</span> kits!
-                        </p>
-                        <p class="text-gray-700 font-inter font-light">
-                            Agora clique no botão abaixo para fazer sua doação real e transformar vidas!
-                        </p>
-                    </div>
-
-                    <!-- CTA Button -->
-                    <div class="text-center mt-8">
-                        <a href="#como-ajudar" class="btn-primary px-8 py-4 rounded-xl text-white font-bold text-lg inline-block transition-all">
-                            Continuar Doação →
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE DOAÇÃO -->
-        <section id="como-ajudar" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-terra/10 via-purple-bright/10 to-teal/10">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20">
-                    <h2 class="text-5xl sm:text-6xl font-bold text-teal mb-6 font-poppins">
-                        Como <span class="gradient-text">Ajudar</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto font-inter font-light">
-                        Escolha sua forma de contribuir e transforme vidas
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-                    <!-- PIX Box -->
-                    <div class="card-premium p-6 sm:p-10 lg:p-12 rounded-3xl border-2 border-terra/20 group">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-terra/20 to-terra/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-7 h-7 text-terra" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-3xl font-bold text-teal font-poppins">Doação via PIX</h3>
-                        </div>
-
-                        <p class="text-gray-700 mb-8 font-inter font-light leading-relaxed text-lg">
-                            <span class="font-bold text-teal">100% do valor</span> vira brinquedo sensorial. Rápido, seguro e sem taxas.
-                        </p>
-
-                        <!-- PIX Key -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-6 mb-8 border border-terra/20">
-                            <p class="text-xs sm:text-sm text-gray-600 font-semibold mb-3 font-inter">Chave PIX:</p>
-                            <div class="flex flex-col sm:flex-row gap-2">
-                                <code class="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-sand rounded-lg text-xs sm:text-sm font-mono text-teal font-semibold break-all overflow-hidden" id="pix-key">
-                                    sensoriacao@piracicaba.org.br
-                                </code>
-                                <button id="copy-pix-btn" onclick="copyPixKey()" class="btn-primary px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-white font-bold text-xs sm:text-sm flex-shrink-0 hover:shadow-xl transition-all">
-                                    Copiar
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- QR Code -->
-                        <div class="bg-gradient-to-br from-sand to-white rounded-2xl p-4 sm:p-8 flex flex-col items-center justify-center mb-8">
-                            <div class="w-40 sm:w-48 h-40 sm:h-48 bg-white rounded-xl border-4 border-teal flex items-center justify-center flex-shrink-0">
-                                <img src="pics/4.jpeg" alt="QR Code PIX" class="w-full h-full object-cover rounded-lg">
-                            </div>
-                            <p class="text-center text-gray-700 mt-4 sm:mt-6 font-inter font-light text-sm sm:text-base">
-                                Escaneie com seu celular e doe agora
-                            </p>
-                        </div>
-
-                        <!-- Values -->
-                        <p class="text-xs sm:text-sm text-gray-600 font-semibold mb-3 sm:mb-4 font-inter">Valores sugeridos:</p>
-                        <div class="grid grid-cols-2 gap-2 sm:gap-3">
-                            <button class="py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-gradient-to-r from-terra/20 to-terra/10 hover:from-terra/30 hover:to-terra/20 text-terra font-bold text-xs sm:text-sm transition-all">R$ 50</button>
-                            <button class="py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-gradient-to-r from-teal/20 to-teal/10 hover:from-teal/30 hover:to-teal/20 text-teal font-bold text-xs sm:text-sm transition-all">R$ 100</button>
-                            <button class="py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-gradient-to-r from-green-bright/20 to-green-bright/10 hover:from-green-bright/30 hover:to-green-bright/20 text-green-bright font-bold text-xs sm:text-sm transition-all">R$ 200</button>
-                            <button class="py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-bright/20 to-purple-bright/10 hover:from-purple-bright/30 hover:to-purple-bright/20 text-purple-bright font-bold text-xs sm:text-sm transition-all">Outro</button>
-                        </div>
-                    </div>
-
-                    <!-- Entrega Física -->
-                    <div class="card-premium p-6 sm:p-10 lg:p-12 rounded-3xl border-2 border-teal/20 group">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal/20 to-teal/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-7 h-7 text-teal" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-3xl font-bold text-teal font-poppins">Entrega Local</h3>
-                        </div>
-
-                        <p class="text-gray-700 mb-8 font-inter font-light leading-relaxed text-lg">
-                            Prefere entregar brinquedos? Visite nossos pontos de coleta.
-                        </p>
-
-                        <!-- Local 1 -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 border border-teal/20">
-                            <h4 class="font-bold text-teal text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2 font-poppins">
-                                <svg class="w-4 sm:w-5 h-4 sm:h-5 text-terra flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                </svg>
-                                <span class="truncate">CRP - Piracicaba</span>
-                            </h4>
-                            <p class="text-gray-700 text-xs sm:text-sm mb-2 font-inter font-light">
-                                <span class="font-bold">Endereço:</span><br/>
-                                Rua [INSERIR ENDEREÇO]
-                            </p>
-                            <p class="text-gray-700 text-xs sm:text-sm font-inter font-light">
-                                <span class="font-bold">Horário:</span><br/>
-                                Seg-Sex 8h às 17h
-                            </p>
-                        </div>
-
-                        <!-- Local 2 -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-6 mb-6 border border-teal/20">
-                            <h4 class="font-bold text-teal text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2 font-poppins">
-                                <svg class="w-4 sm:w-5 h-4 sm:h-5 text-terra flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                </svg>
-                                <span class="truncate">Ponto de Coleta</span>
-                            </h4>
-                            <p class="text-gray-700 text-xs sm:text-sm mb-2 font-inter font-light">
-                                <span class="font-bold">Endereço:</span><br/>
-                                Rua [INSERIR ENDEREÇO SECUNDÁRIO]
-                            </p>
-                            <p class="text-gray-700 text-xs sm:text-sm font-inter font-light">
-                                <span class="font-bold">Horário:</span><br/>
-                                Sábados 10h às 14h
-                            </p>
-                        </div>
-
-                        <!-- Info -->
-                        <div class="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-teal/5 border border-teal/20">
-                            <p class="text-xs sm:text-sm text-gray-700 font-inter font-light">
-                                <span class="font-bold text-teal">✓ Brinquedos novos</span> em embalagem original. Verificamos qualidade e segurança juntos.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE PATROCINADORES -->
-        <section id="patrocinadores" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-bright/5 to-yellow-bright/5 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl sm:text-6xl font-bold text-teal mb-6 font-poppins">
-                        Nossos <span class="gradient-text">Patrocinadores</span>
-                    </h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto font-inter font-light">
-                        Agradecemos aos parceiros que acreditam nesta causa e transformam sonhos em realidade
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Sponsor 1 -->
-                    <div class="sponsor-card">
-                        <div class="w-full h-32 bg-gradient-to-br from-terra/10 to-terra/5 rounded-lg flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <p class="text-sm font-bold text-terra font-poppins">Sponsor</p>
-                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
-                    </div>
-
-                    <!-- Sponsor 2 -->
-                    <div class="sponsor-card">
-                        <div class="w-full h-32 bg-gradient-to-br from-teal/10 to-teal/5 rounded-lg flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <p class="text-sm font-bold text-teal font-poppins">Sponsor</p>
-                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
-                    </div>
-
-                    <!-- Sponsor 3 -->
-                    <div class="sponsor-card">
-                        <div class="w-full h-32 bg-gradient-to-br from-green-soft/10 to-green-soft/5 rounded-lg flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <p class="text-sm font-bold text-green-soft font-poppins">Sponsor</p>
-                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
-                    </div>
-
-                    <!-- Sponsor 4 -->
-                    <div class="sponsor-card">
-                        <div class="w-full h-32 bg-gradient-to-br from-purple-soft/10 to-purple-soft/5 rounded-lg flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <p class="text-sm font-bold text-purple-soft font-poppins">Sponsor</p>
-                                <p class="text-xs text-gray-500 font-inter">[Logo ou Marca]</p>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-teal text-center font-poppins">Empresa/Marca</h3>
-                    </div>
-                </div>
-
-                <!-- CTA Sponsor -->
-                <div class="mt-16 p-10 rounded-2xl card-premium text-center">
-                    <p class="text-lg text-gray-700 mb-6 font-inter font-light">
-                        <span class="font-bold text-teal">Sua empresa quer patrocinar este projeto?</span><br/>
-                        Entre em contato conosco pelo WhatsApp
-                    </p>
-                    <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold inline-block transition-all">
-                        Seja um Parceiro
+                <div class="flex gap-3 sm:gap-6 items-center">
+                    <a href="#projeto" class="text-sm font-semibold text-gray-600 hover:text-teal transition-colors hidden md:block">O Projeto</a>
+                    <a href="#crp" class="text-sm font-semibold text-gray-600 hover:text-teal transition-colors hidden md:block">Sobre o CRP</a>
+                    <a href="#como-ajudar" class="btn-primary px-4 py-2 sm:px-6 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold shadow-md">
+                        Quero doar
                     </a>
                 </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="py-8 sm:py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+                <article class="space-y-6 text-center lg:text-left order-2 lg:order-1">
+                    <h2 class="text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight font-poppins">
+                        <span class="gradient-text block mb-1 sm:mb-2">Campanha SensoriAÇÃO</span>
+                        <span class="text-teal">sentir, brincar e incluir</span>
+                    </h2>
+                    
+                    <p class="text-base sm:text-lg text-gray-700 font-medium">
+                        Neste Dia das Crianças, transforme a brincadeira em desenvolvimento e inclusão.
+                    </p>
+
+                    <p class="text-sm sm:text-base text-gray-600 font-light text-justify lg:text-left">
+                        Muitas vezes, brinquedos convencionais não atendem às necessidades específicas do desenvolvimento de crianças neurodivergentes. Nossa campanha nasce com o propósito de arrecadar brinquedos sensoriais e presentear crianças atendidas no Centro de Reabilitação Piracicaba (CRP).
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+                        <a href="#projeto" class="btn-secondary w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-center">Saiba Mais</a>
+                        <a href="#como-ajudar" class="btn-primary w-full sm:w-auto px-6 py-3.5 rounded-xl text-white font-semibold text-center">Quero doar</a>
+                    </div>
+
+                    <div class="inline-flex items-start sm:items-center gap-2 bg-white/60 px-4 py-3 rounded-lg border border-terra/20 text-left">
+                        <span class="text-terra font-bold mt-0.5 sm:mt-0">✓</span>
+                        <span class="text-xs sm:text-sm font-medium text-gray-700">100% das doações em prol da neurodiversidade infantil</span>
+                    </div>
+                </article>
+
+                <figure class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white order-1 lg:order-2 h-64 sm:h-80 lg:h-[450px]">
+                    <img src="https://lunetas.com.br/wp-content/uploads/2019/09/inclusao-conviver-com-a-diferenca-forma-criancas-mais-empaticas-portal-lunetas.jpg" alt="Crianças brincando de forma inclusiva" class="w-full h-full object-cover">
+                </figure>
             </div>
         </section>
 
-        <!-- FOOTER PREMIUM -->
-        <footer class="bg-gradient-to-b from-teal via-blue-bright to-purple-bright text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" role="contentinfo">
-            <!-- Background decorativo -->
-            <div class="absolute inset-0 -z-10">
-                <div class="absolute bottom-0 right-0 w-96 h-96 bg-terra/20 rounded-full blur-3xl"></div>
-                <div class="absolute top-0 left-0 w-96 h-96 bg-pink-bright/20 rounded-full blur-3xl"></div>
-            </div>
+        <!-- CONCEITOS -->
+        <section id="projeto" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white/40">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-2xl sm:text-4xl font-bold text-center text-teal font-poppins mb-8 sm:mb-12">
+                    Neurodiversidade x Brinquedos Sensoriais
+                </h2>
 
-            <div class="max-w-7xl mx-auto relative z-10">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                    <!-- About -->
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-10 h-10 rounded-xl bg-terra flex items-center justify-center">
-                                <span class="text-lg font-bold text-teal">S</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                    <article class="card-premium p-6 sm:p-8 rounded-2xl border-t-4 border-terra">
+                        <h3 class="text-xl sm:text-2xl font-bold text-terra mb-3 sm:mb-4 font-poppins">O que é Neurodiversidade?</h3>
+                        <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                            É o conceito da neurociência que reconhece que as variações do cérebro humano são frutos da nossa própria diversidade biológica. Assim como temos traços genéticos diferentes, nossos circuitos neurais também se organizam de maneiras únicas. Ser neurodivergente significa que o cérebro processa informações, sons, luzes e emoções por rotas diferentes da maioria.
+                        </p>
+                        <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                            Entender esse conceito é trocar a ideia de "corrigir", pela ideia de respeitar e incluir.
+                        </p>
+                        <div class="bg-terra/10 p-3 sm:p-4 rounded-lg">
+                            <p class="text-xs sm:text-sm text-gray-800 font-medium">
+                                Esse grupo engloba: Autismo (TEA), TDAH, Dislexia, Dispraxia, entre outras condições neurobiológicas.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card-premium p-6 sm:p-8 rounded-2xl border-t-4 border-teal">
+                        <h3 class="text-xl sm:text-2xl font-bold text-teal mb-3 sm:mb-4 font-poppins">O que são Brinquedos Sensoriais?</h3>
+                        <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                            São brinquedos desenvolvidos especialmente para estimular os sentidos — como o tato, a visão, a audição e a coordenação motora. Em neurodivergentes o sistema de filtragem tátil, visual e auditivo costuma funcionar de forma hipersensível (muito intenso) ou hipossensível (pouco intenso).
+                        </p>
+                        <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                            É aí que a magia acontece: brinquedos sensoriais oferecem estímulos táteis e proprioceptivos controlados. Eles ajudam o sistema nervoso central a regular o nível de alerta do cérebro, reduzindo a sobrecarga de estímulos externos, diminuindo a ansiedade e promovendo o foco.
+                        </p>
+                        <div class="bg-teal/10 p-3 sm:p-4 rounded-lg">
+                            <p class="text-xs sm:text-sm text-gray-800 font-medium">
+                                Não são apenas brinquedos — são ferramentas de autorregulação que preparam o cérebro para aprender, explorar e se conectar com o mundo.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRINQUEDOS ARRECADADOS COM METAS -->
+        <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center text-teal font-poppins mb-6 sm:mb-8">Brinquedos Sensoriais arrecadados</h2>
+                <p class="text-sm sm:text-base text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto px-2">Você pode nos ajudar doando o valor do brinquedo via PIX ou <strong>comprando diretamente nos links sugeridos</strong> e enviando para o nosso ponto de coleta.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
+                    <!-- Brinquedo 1 -->
+                    <div class="card-premium p-5 sm:p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="flex flex-col sm:flex-row gap-4 items-start mb-4">
+                            <div class="w-full sm:w-28 h-40 sm:h-28 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden border border-gray-100">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_707749-MLB111681658978_062026-F-estrela-sensorial-fidget-toy-antiestresse-relax-giratoria.webp" alt="Estrela Espiral 3D" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-2xl font-bold font-poppins">Sensoriação</h3>
+                            <div class="flex-1 w-full">
+                                <h3 class="text-base sm:text-lg font-bold text-terra mb-1 font-poppins leading-tight">Estrela Espiral 3D</h3>
+                                <p class="text-sm text-gray-600 font-light mb-2">Auxilia no alívio do estresse e da ansiedade por meio do movimento ritmado e contínuo. É um excelente recurso visual que ajuda no foco e no controle da sobrecarga sensorial.</p>
+                                <span class="text-xs font-bold text-terra bg-terra/10 px-2 py-1 rounded inline-block mb-3">Principal benefício: foco, relaxamento e autorregulação visual.</span>
+                                
+                                <!-- Meta Progress Bar -->
+                                <div class="mt-2">
+                                    <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                        <span>Meta Arrecadação</span>
+                                        <span class="text-terra">0/100</span>
+                                    </div>
+                                    <div class="w-full h-2 progress-bar-bg rounded-full overflow-hidden">
+                                        <div class="progress-bar-fill bg-terra w-0"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-white/80 text-sm leading-relaxed font-inter font-light">
-                            Uma iniciativa do Centro de Reabilitação de Piracicaba para incluir, acolher e transformar vidas através do brincar sensorial.
-                        </p>
+                        <a href="https://www.mercadolivre.com.br/estrela-sensorial-fidget-toy-antiestresse-relax-giratoria/up/MLBU4042752493?matt_tool=38524122&pdp_filters=item_id%3AMLB4738911525&ua=5Lvd_48kFNA8eYggldJlpjKTS7bzyvtN4yo_eIaBGbdXph4#origin=share&sid=share&wid=MLB4738911525&action=whatsapp" target="_blank" class="block w-full text-center px-4 py-3 sm:py-2 border-2 border-terra text-terra rounded-lg font-semibold hover:bg-terra hover:text-white transition-colors">🛒 Comprar e Doar</a>
                     </div>
 
-                    <!-- Links -->
-                    <div>
-                        <h4 class="text-lg font-bold mb-6 font-poppins">Links Rápidos</h4>
-                        <ul class="space-y-3 text-sm font-inter font-light">
-                            <li><a href="#hero" class="text-white/80 hover:text-terra transition-colors">Topo</a></li>
-                            <li><a href="#projeto" class="text-white/80 hover:text-terra transition-colors">O Projeto</a></li>
-                            <li><a href="#brinquedos" class="text-white/80 hover:text-terra transition-colors">Brinquedos</a></li>
-                            <li><a href="#como-ajudar" class="text-white/80 hover:text-terra transition-colors">Como Ajudar</a></li>
-                            <li><a href="#patrocinadores" class="text-white/80 hover:text-terra transition-colors">Patrocinadores</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Contato -->
-                    <div>
-                        <h4 class="text-lg font-bold mb-6 font-poppins">Entre em Contato</h4>
-                        <div class="space-y-4 text-sm font-inter font-light">
-                            <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/80 hover:text-terra transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.346 0-2.67-.33-3.816-.95l-.274-.16-.283.09C6.412 5.859 5.84 7.468 5.84 9.076c0 4.081 3.32 7.39 7.405 7.39c1.775 0 3.453-.681 4.71-1.91l.223-.22-.303.037c-.15.02-.636.129-1.035.129-.473 0-.758-.074-.995-.127-.766-.168-1.186-.557-1.448-.896l-.148-.19-.152.134c-.347.307-.905.506-1.502.506-.953 0-1.774-.601-2.098-1.461l-.08-.215-.217.03c-.224.031-.636.092-.636.092-.319.042-.64-.121-.682-.463-.042-.341.237-.64.577-.682.167-.02.535-.066.882-.092.433-.033.838-.137 1.2-.306l.265-.134.096-.301c.129-.401.359-1.073.359-1.073.1-.327.02-.63-.22-.833-.243-.204-.617-.16-.774-.16s-.444.025-.568.041l-.141.022-.037.068c-.042.079-.118.224-.199.383l-.026.047-.108.186c-.065.113-.137.236-.185.317l-.05.085.044.002c.08.004.2.008.2.008.117 0 .235 0 .352-.004l.316-.016.055-.081c.078-.113.22-.319.363-.53.143-.21.29-.427.362-.555.134-.229.242-.425.268-.537.03-.132.015-.287-.025-.392-.041-.103-.14-.159-.269-.159h-.456c-.075 0-.158.008-.237.027l-.093.02-.026.065c-.016.04-.096.243-.232.58l-.026.064.01.04c.018.066.063.23.063.23z"/>
-                                </svg>
-                                WhatsApp
-                            </a>
-                            <p class="text-white/80">
-                                <span class="font-semibold">Email:</span><br/>
-                                sensoriacao@piracicaba.org.br
-                            </p>
-                            <p class="text-white/80">
-                                <span class="font-semibold">Período:</span><br/>
-                                05 a 12 de Outubro
-                            </p>
+                    <!-- Brinquedo 2 -->
+                    <div class="card-premium p-5 sm:p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="flex flex-col sm:flex-row gap-4 items-start mb-4">
+                            <div class="w-full sm:w-28 h-40 sm:h-28 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden border border-gray-100">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_671519-MLB114300985153_072026-F-colar-mordedor-sensorial-de-silicone-antiestresse.webp" alt="Mordedores Sensoriais" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 w-full">
+                                <h3 class="text-base sm:text-lg font-bold text-teal mb-1 font-poppins leading-tight">Mordedores Sensoriais (estilo lego)</h3>
+                                <p class="text-sm text-gray-600 font-light mb-2">Oferece uma alternativa segura e higiênica para a busca de estímulo oral. Ajuda a canalizar a tensão, promovendo autorregulação e a concentração no dia a dia.</p>
+                                <span class="text-xs font-bold text-teal bg-teal/10 px-2 py-1 rounded inline-block mb-3">Principal benefício: Estimulação oral e redução da ansiedade.</span>
+                                
+                                <!-- Meta Progress Bar -->
+                                <div class="mt-2">
+                                    <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                        <span>Meta Arrecadação</span>
+                                        <span class="text-teal">0/50</span>
+                                    </div>
+                                    <div class="w-full h-2 progress-bar-bg rounded-full overflow-hidden">
+                                        <div class="progress-bar-fill bg-teal w-0"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Divider -->
-                <div class="border-t border-white/20 pt-8 mb-8">
-                    <!-- Transparência -->
-                    <div class="p-6 rounded-xl bg-white/10 backdrop-blur border border-white/20 mb-8">
-                        <p class="text-sm font-semibold mb-2 font-poppins">✓ Compromisso com Transparência</p>
-                        <p class="text-xs text-white/80 leading-relaxed font-inter font-light">
-                            Toda doação é documentada e acompanhada. Em novembro, divulgaremos relatório completo com fotos dos kits e beneficiários. Nenhuma doação é desperdiçada. 100% vai para as crianças.
-                        </p>
+                        <a href="https://www.mercadolivre.com.br/colar-mordedor-sensorial-de-silicone-antiestresse/up/MLBU3622481541?matt_tool=38524122&pdp_filters=item_id%3AMLB4556069183&ua=w0UQqSJpIpf6twL_k_ZKY5LjYjU6grHc1u4EcDDgIvnZrUk" target="_blank" class="block w-full text-center px-4 py-3 sm:py-2 border-2 border-teal text-teal rounded-lg font-semibold hover:bg-teal hover:text-white transition-colors">🛒 Comprar e Doar</a>
                     </div>
 
-                    <!-- Copyright -->
-                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
-                        <p class="font-inter font-light">
-                            &copy; 2024 Centro de Reabilitação de Piracicaba. Todos os direitos reservados a <span class="font-semibold text-white">Carlos Gavasso</span>.
-                        </p>
-                        <div class="flex gap-6">
-                            <a href="#" class="hover:text-terra transition-colors font-inter font-light">Privacidade</a>
-                            <a href="#" class="hover:text-terra transition-colors font-inter font-light">Termos</a>
+                    <!-- Brinquedo 3 -->
+                    <div class="card-premium p-5 sm:p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="flex flex-col sm:flex-row gap-4 items-start mb-4">
+                            <div class="w-full sm:w-28 h-40 sm:h-28 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden border border-gray-100">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_846354-MLB110841692609_042026-F-kit-bolas-tateis-bebe-mordedor-estimula-coordenacao-motora.webp" alt="Bolinhas Sensoriais" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 w-full">
+                                <h3 class="text-base sm:text-lg font-bold text-green-bright mb-1 font-poppins leading-tight">Bolinhas Sensoriais</h3>
+                                <p class="text-sm text-gray-600 font-light mb-2">Com diferentes texturas e densidades, incentivam a exploração tátil, o desenvolvimento da coordenação fina e o alívio de tensões de forma lúdica.</p>
+                                <span class="text-xs font-bold text-green-bright bg-green-bright/10 px-2 py-1 rounded inline-block mb-3">Principal benefício: estímulo tátil, coordenação e alívio da tensão.</span>
+                                
+                                <!-- Meta Progress Bar -->
+                                <div class="mt-2">
+                                    <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                        <span>Meta Arrecadação</span>
+                                        <span class="text-green-bright">0/60</span>
+                                    </div>
+                                    <div class="w-full h-2 progress-bar-bg rounded-full overflow-hidden">
+                                        <div class="progress-bar-fill bg-green-bright w-0"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <a href="https://www.mercadolivre.com.br/kit-bolas-tateis-bebe-mordedor-estimula-coordenacao-motora/up/MLBU3926394420?matt_tool=38524122&pdp_filters=item_id%3AMLB4631198651&ua=3xm3mXDOhr3AxRLaZBEHs6hpF8gNyubtV312QWF0S-uGh-Q#origin=share&sid=share&wid=MLB4631198651&action=whatsapp" target="_blank" class="block w-full text-center px-4 py-3 sm:py-2 border-2 border-green-bright text-green-bright rounded-lg font-semibold hover:bg-green-bright hover:text-white transition-colors">🛒 Comprar e Doar</a>
+                    </div>
+
+                    <!-- Brinquedo 4 -->
+                    <div class="card-premium p-5 sm:p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="flex flex-col sm:flex-row gap-4 items-start mb-4">
+                            <div class="w-full sm:w-28 h-40 sm:h-28 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden border border-gray-100">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_671886-MLM81489849846_012025-O.webp" alt="Fidget Toys" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 w-full">
+                                <h3 class="text-base sm:text-lg font-bold text-purple-bright mb-1 font-poppins leading-tight">Fidget Toys</h3>
+                                <p class="text-sm text-gray-600 font-light mb-2">Ferramentas táticas ideais para manter as mãos ocupadas e a mente focada. Ajudam a diminuir a agitação e a melhorar a atenção em momentos de estudo ou descanso.</p>
+                                <span class="text-xs font-bold text-purple-bright bg-purple-bright/10 px-2 py-1 rounded inline-block mb-3">Principal benefício: concentração e canalização de energia.</span>
+                                
+                                <!-- Meta Progress Bar -->
+                                <div class="mt-2">
+                                    <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                        <span>Meta Arrecadação</span>
+                                        <span class="text-purple-bright">0/50</span>
+                                    </div>
+                                    <div class="w-full h-2 progress-bar-bg rounded-full overflow-hidden">
+                                        <div class="progress-bar-fill bg-purple-bright w-0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://m.magazineluiza.com.br/pop-it-fidget-toys-shiny-toys-2-pecas/p/231361700/br/popf/?partner_id=64853&utm_source=pdp_desk&utm_medium=share&seller_id=magazineluiza" target="_blank" class="block w-full text-center px-4 py-3 sm:py-2 border-2 border-purple-bright text-purple-bright rounded-lg font-semibold hover:bg-purple-bright hover:text-white transition-colors">🛒 Comprar e Doar</a>
                     </div>
                 </div>
             </div>
-        </footer>
+        </section>
 
-        <!-- Floating WhatsApp Button -->
-        <a href="https://wa.me/5519XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="floating-button fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-terra to-terra-light rounded-full flex items-center justify-center shadow-2xl hover:shadow-xl transform transition-all hover:scale-110 z-40" title="Fale conosco no WhatsApp" aria-label="Abrir WhatsApp">
-            <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.346 0-2.67-.33-3.816-.95l-.274-.16-.283.09C6.412 5.859 5.84 7.468 5.84 9.076c0 4.081 3.32 7.39 7.405 7.39c1.775 0 3.453-.681 4.71-1.91l.223-.22-.303.037c-.15.02-.636.129-1.035.129-.473 0-.758-.074-.995-.127-.766-.168-1.186-.557-1.448-.896l-.148-.19-.152.134c-.347.307-.905.506-1.502.506-.953 0-1.774-.601-2.098-1.461l-.08-.215-.217.03c-.224.031-.636.092-.636.092-.319.042-.64-.121-.682-.463-.042-.341.237-.64.577-.682.167-.02.535-.066.882-.092.433-.033.838-.137 1.2-.306l.265-.134.096-.301c.129-.401.359-1.073.359-1.073.1-.327.02-.63-.22-.833-.243-.204-.617-.16-.774-.16s-.444.025-.568.041l-.141.022-.037.068c-.042.079-.118.224-.199.383l-.026.047-.108.186c-.065.113-.137.236-.185.317l-.05.085.044.002c.08.004.2.008.2.008.117 0 .235 0 .352-.004l.316-.016.055-.081c.078-.113.22-.319.363-.53.143-.21.29-.427.362-.555.134-.229.242-.425.268-.537.03-.132.015-.287-.025-.392-.041-.103-.14-.159-.269-.159h-.456c-.075 0-.158.008-.237.027l-.093.02-.026.065c-.016.04-.096.243-.232.58l-.026.064.01.04c.018.066.063.23.063.23z"/>
-            </svg>
-        </a>
+        <!-- SOBRE O CRP E MAPA -->
+        <section id="crp" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+                    <article class="space-y-5">
+                        <h2 class="text-2xl sm:text-4xl font-bold text-teal font-poppins mb-6">
+                            Conhecendo o Centro de Reabilitação Piracicaba
+                        </h2>
+                        
+                        <p class="text-sm sm:text-base text-gray-700 font-light text-justify">
+                            Há décadas construindo uma história na cidade de Piracicaba, o CRP nasceu do sonho de oferecer autonomia, inclusão e qualidade de vida. Ao longo de toda trajetória, a instituição se consolidou como uma referência essencial no acolhimento de pessoas com deficiências e neurodivergências. O que começou com um trabalho de reabilitação física e intelectual, hoje é um ecossistema completo de apoio multiprofissional, onde fisioterapeutas, terapeutas ocupacionais, fonoaudiólogos, psicólogos e educadores trabalham lado a lado para garantir que cada um se desenvolva respeitando suas individualidades.
+                        </p>
+                        
+                        <p class="text-sm sm:text-base text-gray-700 font-light text-justify">
+                            Como uma entidade filantrópica, sem fins lucrativos e de caráter assistencial, o CRP sustenta suas operações por meio de um modelo híbrido. Isso significa que combina recursos públicos, parcerias, eventos comunitários e doações para manter os atendimentos gratuitos para famílias em situação de vulnerabilidade.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-gray-700 font-light text-justify">
+                            Sabendo que terapias sensoriais fazem uma diferença gigantesca no atendimento, a campanha SensoriAÇÃO nasceu para levar esse desenvolvimento para dentro de casa. Cada brinquedo sensorial arrecadado nesta campanha será entregue para as crianças atendidas na instituição terem em seu lar. Assim, o estímulo, a regulação emocional e a diversão continuam no ambiente familiar.
+                        </p>
+
+                        <div class="pt-4 pb-2">
+                            <p class="font-semibold text-gray-800 text-sm sm:text-base">
+                                📍 O CRP se localiza na Rua Almirante Barroso, 500 – Bairro Alto, Piracicaba - SP.
+                            </p>
+                            <a href="https://crp.org.br/" target="_blank" class="text-teal font-bold hover:underline inline-block mt-2">Para saber mais, acesse: crp.org.br</a>
+                        </div>
+                    </article>
+
+                    <!-- Google Maps Embed -->
+                    <div class="w-full h-80 sm:h-96 rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-gray-100">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.68695071199!2d-47.6441716!3d-22.7246194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c312521c7849e7%3A0xc47bdf214fb96dcb!2sR.%20Almirante%20Barroso%2C%20500%20-%20Bairro%20Alto%2C%20Piracicaba%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESCOLHA COMO AJUDAR (PIX E PONTOS DE COLETA) -->
+        <section id="como-ajudar" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal/10 to-terra/10 border-t border-b border-white/50">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-teal font-poppins mb-10">Escolha como ajudar:</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Doação via PIX -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-teal/20 relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-teal/10 rounded-bl-full -z-0"></div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 font-poppins mb-2 relative z-10">Doação via Pix:</h3>
+                        <p class="text-sm text-gray-600 mb-8 font-medium relative z-10">100% do valor arrecadado será revertido em briquedos sensoriais</p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 relative z-10">
+                            <!-- QR Code -->
+                            <div class="w-40 h-40 bg-gray-100 p-2 rounded-xl border-2 border-dashed border-teal flex items-center justify-center flex-shrink-0">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=sensoriacao@gmail.com" alt="QR Code do PIX" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
+                            </div>
+                            
+                            <div class="text-left space-y-4 w-full">
+                                <div>
+                                    <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Chave Pix:</p>
+                                    <div class="flex flex-col sm:flex-row gap-2">
+                                        <input type="text" id="pixKey" value="sensoriacao@gmail.com" class="w-full bg-sand border border-gray-300 rounded-lg px-3 py-3 sm:px-4 text-center sm:text-left text-gray-800 font-bold focus:outline-none focus:border-teal text-sm sm:text-base" readonly>
+                                        <button onclick="copyPix()" class="bg-teal hover:bg-teal/90 text-white px-6 py-3 rounded-lg font-bold transition-colors w-full sm:w-auto">
+                                            Copiar
+                                        </button>
+                                    </div>
+                                    <p id="copyMsg" class="text-green-600 text-sm font-medium mt-2 hidden text-center sm:text-left">✓ Chave copiada com sucesso!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pontos de Coleta -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-terra/20 relative overflow-hidden flex flex-col justify-center">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-terra/10 rounded-bl-full -z-0"></div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 font-poppins mb-6 relative z-10">Pontos de Coleta:</h3>
+                        
+                        <div class="bg-sand rounded-xl p-6 border border-gray-200 relative z-10 flex flex-col justify-center h-full">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="text-terra text-2xl mt-1">📦</div>
+                                <div>
+                                    <p class="font-bold text-gray-800 text-lg mb-1">Endereço de Entrega</p>
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Avenida Piracicamirim, nº 3039<br>
+                                        Bloco 3, apartamento 104
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-terra/10 p-4 rounded-lg mt-4 border border-terra/20">
+                                <p class="text-sm font-bold text-terra">OBS: Pedir para entregar com o nome de Gabriel Mariano</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- APOIADORES INCLUSIVOS -->
+        <section class="py-12 sm:py-16 bg-white text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-2xl sm:text-3xl font-bold text-teal font-poppins mb-4">Nossos Apoiadores</h3>
+                <p class="text-sm sm:text-base text-gray-600 font-light mb-8 max-w-2xl mx-auto">Agradecemos a todos que acreditam na inclusão e fazem esta campanha acontecer. Junte-se a nós!</p>
+                
+                <!-- Container Flexível para múltiplos apoiadores (copie e cole o molde abaixo para adicionar mais) -->
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                    
+                    <!-- MOLDE 1: Copie este bloco div inteiro para adicionar um novo apoiador -->
+                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 w-32 sm:w-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+                        <!-- Substitua a div abaixo por uma tag <img> se tiver a logo da pessoa/empresa -->
+                        <div class="w-16 h-16 bg-gray-200 rounded-full mb-3 flex items-center justify-center text-gray-400">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-700 text-center leading-tight">Nome do Apoiador 1</p>
+                    </div>
+                    <!-- FIM DO MOLDE 1 -->
+
+                    <!-- MOLDE 2: Exemplo de Empresa -->
+                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 w-32 sm:w-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-gray-200 rounded-full mb-3 flex items-center justify-center text-gray-400">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-700 text-center leading-tight">Empresa Apoiadora</p>
+                    </div>
+                    <!-- FIM DO MOLDE 2 -->
+                    
+                    <!-- Cole aqui novos moldes para novos apoiadores -->
+
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- JavaScript -->
+    <!-- FOOTER ATUALIZADO -->
+    <footer class="bg-teal py-8 px-4 text-center text-white">
+        <p class="font-light text-xs sm:text-sm">© 2026 Campanha SensoriAÇÃO. Todos os direitos reservados a Carlos Gavasso.</p>
+        <p class="font-light text-[10px] sm:text-xs mt-2 opacity-80">100% das doações são destinadas às crianças neurodivergentes.</p>
+    </footer>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5519998566138?text=Olá,%20Gabriel!%20Gostaria%20de%20ajudar%20na%20Campanha%20SensoriAÇÃO!" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-3 sm:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50 flex items-center justify-center group" aria-label="Fale com Gabriel no WhatsApp">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.383-.058c.104-.124.453-.525.576-.705.123-.181.246-.151.405-.087l1.002.47c.159.087.265.13.304.202.039.072.039.417-.105.822z"/>
+        </svg>
+        <span class="absolute right-full mr-4 bg-white text-gray-800 text-xs font-bold px-3 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Fale com Gabriel
+        </span>
+    </a>
+
+    <!-- Script para Copiar Chave PIX -->
     <script>
-        function copyPixKey() {
-            const pixKey = document.getElementById('pix-key').textContent;
-            navigator.clipboard.writeText(pixKey).then(() => {
-                const btn = document.getElementById('copy-pix-btn');
-                const originalText = btn.textContent;
-                btn.textContent = 'Copiado! ✓';
-                btn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('bg-green-500');
-                }, 2000);
-            }).catch(() => {
-                alert('Erro ao copiar. Tente novamente.');
-            });
+        function copyPix() {
+            var copyText = document.getElementById("pixKey");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            navigator.clipboard.writeText(copyText.value);
+            
+            var msg = document.getElementById("copyMsg");
+            msg.classList.remove("hidden");
+            setTimeout(function(){
+                msg.classList.add("hidden");
+            }, 3000);
         }
-
-        // Smooth scroll para links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
-
-        // Animação ao scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card-premium, .sponsor-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Minijogo
-        let toyCount = 0;
-        const maxToys = 20;
-
-        document.querySelectorAll('.game-toy').forEach(btn => {
-            btn.addEventListener('click', function() {
-                toyCount++;
-                
-                // Update counter
-                document.getElementById('toy-count').textContent = toyCount;
-
-                // Pulse effect
-                this.classList.add('clicked');
-                setTimeout(() => this.classList.remove('clicked'), 500);
-
-                // Floating animation
-                const floatingElement = document.createElement('div');
-                floatingElement.textContent = '💝';
-                floatingElement.style.position = 'fixed';
-                floatingElement.style.left = this.getBoundingClientRect().left + 'px';
-                floatingElement.style.top = this.getBoundingClientRect().top + 'px';
-                floatingElement.style.fontSize = '24px';
-                floatingElement.style.pointerEvents = 'none';
-                floatingElement.style.zIndex = '1000';
-                floatingElement.style.animation = 'float-up 1s ease-out forwards';
-                document.body.appendChild(floatingElement);
-
-                setTimeout(() => floatingElement.remove(), 1000);
-
-                // Show reward message
-                if (toyCount >= maxToys) {
-                    document.getElementById('reward-message').classList.remove('hidden');
-                    document.getElementById('reward-count').textContent = Math.floor(toyCount / maxToys);
-                }
-            });
-        });
-
-        // Add float-up animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float-up {
-                0% {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-                100% {
-                    opacity: 0;
-                    transform: translateY(-100px) scale(0.5);
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
