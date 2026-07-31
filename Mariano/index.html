@@ -23,6 +23,7 @@
                         'sand': '#FFF8F3',
                         'teal': '#00B4D8',
                         'terra': '#FF6B35',
+                        'terra-light': '#FF8C5A',
                         'purple-bright': '#D946EF',
                         'green-bright': '#10B981',
                     },
@@ -80,26 +81,34 @@
         .progress-bar-fill { height: 100%; border-radius: 9999px; transition: width 1s ease-in-out; }
     </style>
 </head>
-<body class="font-inter text-gray-800 antialiased pt-20 sm:pt-24">
+<body class="font-inter text-gray-800 antialiased pt-24">
 
-    <!-- HEADER MODERNO FLUTUANTE -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pb-2 sm:px-6 lg:px-8 pointer-events-none">
-        <div class="max-w-7xl mx-auto pointer-events-auto">
-            <nav class="bg-white/85 backdrop-blur-lg border border-white shadow-lg rounded-2xl px-4 py-3 flex justify-between items-center transition-all">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal to-terra flex items-center justify-center shadow-md flex-shrink-0">
-                        <span class="text-xl font-bold font-poppins text-white">S</span>
+    <!-- NOVO HEADER MINIMALISTA E PREMIUM -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center h-20">
+                <!-- Logo & Branding -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-teal to-terra flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 flex-shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold font-poppins text-white">S</span>
                     </div>
-                    <div class="flex flex-col justify-center">
-                        <h1 class="text-sm sm:text-base font-bold font-poppins text-teal leading-tight">Campanha SensoriAÇÃO</h1>
-                        <p class="text-[10px] sm:text-xs text-gray-500 font-medium leading-tight">sentir, brincar e incluir</p>
+                    <div class="flex flex-col">
+                        <h1 class="text-sm sm:text-lg font-bold font-poppins text-gray-800 tracking-tight group-hover:text-teal transition-colors leading-tight">Campanha SensoriAÇÃO</h1>
+                        <p class="text-[10px] sm:text-xs text-gray-500 font-medium tracking-wide uppercase mt-0.5">sentir, brincar e incluir</p>
                     </div>
+                </a>
+
+                <!-- Links de Navegação -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#projeto" class="text-gray-600 font-medium hover:text-teal transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-teal after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">O Projeto</a>
+                    <a href="#crp" class="text-gray-600 font-medium hover:text-teal transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-teal after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">Sobre o CRP</a>
                 </div>
-                <div class="flex gap-3 sm:gap-6 items-center">
-                    <a href="#projeto" class="text-sm font-semibold text-gray-600 hover:text-teal transition-colors hidden md:block">O Projeto</a>
-                    <a href="#crp" class="text-sm font-semibold text-gray-600 hover:text-teal transition-colors hidden md:block">Sobre o CRP</a>
-                    <a href="#como-ajudar" class="btn-primary px-4 py-2 sm:px-6 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold shadow-md">
-                        Quero doar
+
+                <!-- Botão CTA -->
+                <div class="flex items-center">
+                    <a href="#como-ajudar" class="relative inline-flex items-center justify-center px-5 py-2 sm:px-6 sm:py-2.5 overflow-hidden font-bold text-white rounded-full shadow-md group bg-gradient-to-br from-terra to-terra-light hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-20"></span>
+                        <span class="relative text-xs sm:text-sm">Quero Doar</span>
                     </a>
                 </div>
             </nav>
