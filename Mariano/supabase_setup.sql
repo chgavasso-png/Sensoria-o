@@ -57,6 +57,7 @@ create table if not exists public.brinquedos (
     id           uuid primary key default gen_random_uuid(),
     nome         text not null,
     categoria    text default '',
+    descricao    text default '',
     imagem_url   text default '',
     link         text default '',
     meta         integer not null default 0,

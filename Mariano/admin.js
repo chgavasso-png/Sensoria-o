@@ -299,6 +299,7 @@ function limparFormBrinquedo() {
     document.getElementById('brinquedo-id').value = '';
     document.getElementById('brinquedo-nome').value = '';
     document.getElementById('brinquedo-categoria').value = '';
+    document.getElementById('brinquedo-descricao').value = '';
     document.getElementById('brinquedo-imagem').value = '';
     document.getElementById('brinquedo-link').value = '';
     document.getElementById('brinquedo-meta').value = 0;
@@ -311,6 +312,7 @@ async function salvarBrinquedo(evento) {
     evento.preventDefault();
     const id = document.getElementById('brinquedo-id').value;
     const link = document.getElementById('brinquedo-link').value.trim();
+    const descricao = document.getElementById('brinquedo-descricao').value.trim();
     const dados = {
         nome: document.getElementById('brinquedo-nome').value.trim(),
         categoria: document.getElementById('brinquedo-categoria').value.trim(),
@@ -318,6 +320,7 @@ async function salvarBrinquedo(evento) {
         meta: Number(document.getElementById('brinquedo-meta').value || 0),
         visivel: document.getElementById('brinquedo-visivel').checked
     };
+    if (descricao) dados.descricao = descricao;
     if (link) dados.link = link;
 
     try {
@@ -360,6 +363,7 @@ function editarBrinquedo(id) {
     document.getElementById('brinquedo-id').value = b.id;
     document.getElementById('brinquedo-nome').value = b.nome;
     document.getElementById('brinquedo-categoria').value = b.categoria || '';
+    document.getElementById('brinquedo-descricao').value = b.descricao || '';
     document.getElementById('brinquedo-imagem').value = b.imagem_url || '';
     document.getElementById('brinquedo-link').value = b.link || '';
     document.getElementById('brinquedo-meta').value = b.meta || 0;

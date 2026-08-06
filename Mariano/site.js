@@ -38,6 +38,7 @@ async function carregarVitrine() {
         const pct = meta > 0 ? Math.min(100, (atingidos / meta) * 100) : 0;
         const completo = meta > 0 && atingidos >= meta;
         const link = b.link ? b.link.trim() : '';
+        const descricao = b.descricao ? b.descricao.trim() : '';
 
         return `
         <article class="card-premium rounded-2xl overflow-hidden flex flex-col border-t-4 ${completo ? 'border-green-500' : 'border-terra'} mx-auto w-full max-w-sm">
@@ -49,7 +50,8 @@ async function carregarVitrine() {
             </div>
             <div class="p-5 flex flex-col flex-grow">
                 <h3 class="font-bold text-gray-800 font-poppins leading-tight mb-1 text-center">${esc(b.nome)}</h3>
-                ${b.categoria ? `<p class="text-xs text-terra font-semibold uppercase tracking-wide mb-4 text-center">${esc(b.categoria)}</p>` : '<div class="mb-4"></div>'}
+                ${b.categoria ? `<p class="text-xs text-terra font-semibold uppercase tracking-wide mb-2 text-center">${esc(b.categoria)}</p>` : '<div class="mb-2"></div>'}
+                ${descricao ? `<p class="text-sm text-gray-600 font-light leading-relaxed mb-4 text-center">${esc(descricao)}</p>` : ''}
 
                 ${link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer" class="block w-full text-center text-sm font-bold text-white bg-gradient-to-r from-terra to-terra-light hover:from-terra-light hover:to-terra rounded-lg py-2.5 mb-4 transition-all">🔗 Acessar</a>` : ''}
 

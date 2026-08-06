@@ -6,11 +6,12 @@
 -- ============================================================
 
 -- ------------------------------------------------------------
--- BRINQUEDOS: adiciona colunas "visivel" e "link"
+-- BRINQUEDOS: adiciona colunas "visivel", "link" e "descricao"
 -- (só aparece na vitrine pública o que o admin marcar como visível)
 -- ------------------------------------------------------------
 alter table public.brinquedos add column if not exists visivel boolean not null default false;
 alter table public.brinquedos add column if not exists link text default '';
+alter table public.brinquedos add column if not exists descricao text default '';
 
 -- ------------------------------------------------------------
 -- REMOVE A TABELA "doadores" (funcionalidade descontinuada)
