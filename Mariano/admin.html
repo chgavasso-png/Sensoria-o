@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Painel Administrativo - SensoriAÇÃO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sand': '#FFF8F3',
+                        'teal': '#00B4D8',
+                        'terra': '#FF6B35',
+                        'terra-light': '#FF8C5A',
+                        'purple-bright': '#D946EF',
+                        'green-bright': '#10B981'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-ativa { background: #00B4D8; color: #fff; }
+        .tab-ativa:hover { background: #00a2c2; }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-teal to-terra flex items-center justify-center shadow-md flex-shrink-0">
+                    <span class="text-xl font-bold font-poppins text-white">S</span>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-sm sm:text-lg font-bold font-poppins text-gray-800 leading-tight">Painel Administrativo</h1>
+                    <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wide">SensoriAÇÃO</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <a href="index.html" class="text-xs sm:text-sm font-semibold text-gray-600 hover:text-teal transition-colors">Ver site</a>
+                <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                <div class="flex items-center gap-2">
+                    <div class="flex-col text-right hidden sm:flex">
+                        <span id="nome-admin" class="text-xs font-bold text-gray-800 leading-tight">Administrador</span>
+                        <button onclick="sair()" class="text-[10px] text-gray-500 hover:text-terra text-right transition-colors">Sair da conta</button>
+                    </div>
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-r from-teal to-blue-500 text-white flex items-center justify-center font-bold text-sm border-2 border-white ring-2 ring-gray-100">A</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- AVISO DE ERRO GLOBAL -->
+    <div id="alerta" class="hidden max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+        <div class="bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3"></div>
+    </div>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ABAS -->
+        <div class="flex flex-wrap gap-2 mb-8 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-full sm:w-fit">
+            <button data-aba="visao" onclick="trocarAba('visao')" class="btn-aba tab-ativa px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors">Visão Geral</button>
+            <button data-aba="arrecadacao" onclick="trocarAba('arrecadacao')" class="btn-aba px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition-colors">Arrecadação Mensal</button>
+            <button data-aba="brinquedos" onclick="trocarAba('brinquedos')" class="btn-aba px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition-colors">Brinquedos</button>
+            <button data-aba="apoiadores" onclick="trocarAba('apoiadores')" class="btn-aba px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition-colors">Apoiadores</button>
+            <button data-aba="site" onclick="trocarAba('site')" class="btn-aba px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition-colors">Pix & Site</button>
+        </div>
+
+        <!-- ================= ABA: VISÃO GERAL ================= -->
+        <section id="aba-visao" class="aba">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 font-poppins">Visão Geral da Campanha</h2>
+                <p class="text-gray-500 mt-1">Acompanhe as arrecadações e gerencie as metas de brinquedos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden">
+                    <div class="absolute right-0 top-0 h-full w-2 bg-teal"></div>
+                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Arrecadado</p>
+                    <h3 id="card-total" class="text-3xl font-bold text-gray-800">R$ 0,00</h3>
+                    <p id="card-total-sub" class="text-xs text-gray-400 font-medium mt-2">0 lançamentos registrados</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden">
+                    <div class="absolute right-0 top-0 h-full w-2 bg-terra"></div>
+                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Brinquedos Atingidos</p>
+                    <h3 class="text-3xl font-bold text-gray-800"><span id="card-brinq">0</span> <span class="text-lg text-gray-400">/ <span id="card-brinq-meta">0</span></span></h3>
+                    <div class="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
+                        <div id="card-brinq-barra" class="h-full bg-terra" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-100 bg-gray-50/50">
+                    <h3 class="text-lg font-bold text-gray-800">Progresso por Brinquedo</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white text-xs text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                <th class="px-6 py-4 font-semibold">Brinquedo</th>
+                                <th class="px-6 py-4 font-semibold">Categoria</th>
+                                <th class="px-6 py-4 font-semibold">Progresso</th>
+                                <th class="px-6 py-4 font-semibold text-center">Atingidos</th>
+                                <th class="px-6 py-4 font-semibold text-center">Meta</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-visao" class="text-sm text-gray-700 divide-y divide-gray-50"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABA: ARRECADAÇÃO ================= -->
+        <section id="aba-arrecadacao" class="aba hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 font-poppins">Arrecadação</h2>
+                <p class="text-gray-500 mt-1">Registre cada valor recebido e acompanhe o total por mês.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Formulário -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-1">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Adicionar Valor</h3>
+                    <form onsubmit="salvarDoacao(event)" class="space-y-4">
+                        <input type="hidden" id="doacao-id">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Valor (R$)</label>
+                            <input type="number" step="0.01" min="0" id="doacao-valor" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Doador</label>
+                            <input type="text" id="doacao-doador" placeholder="Nome de quem doou" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Data</label>
+                            <input type="date" id="doacao-data" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Método</label>
+                            <select id="doacao-metodo" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                                <option>Pix</option>
+                                <option>Dinheiro</option>
+                                <option>Transferência</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+                            <input type="text" id="doacao-descricao" placeholder="Opcional" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="submit" class="flex-grow bg-teal text-white font-bold py-3 rounded-lg hover:bg-teal/90 transition-colors">Salvar</button>
+                            <button type="button" onclick="limparFormDoacao()" class="px-4 py-3 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Resumo mensal -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-2">
+                    <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">Arrecadação Mensal</h3>
+                        <div class="flex gap-2">
+                            <button onclick="exportarExcel('mensal')" class="bg-green-bright text-white text-sm font-bold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">Baixar resumo (Excel)</button>
+                            <button onclick="exportarExcel('completo')" class="border border-green-bright text-green-bright text-sm font-bold px-4 py-2 rounded-lg hover:bg-green-bright/10 transition-colors">Baixar tudo</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                    <th class="px-4 py-3 font-semibold">Mês</th>
+                                    <th class="px-4 py-3 font-semibold text-center">Lançamentos</th>
+                                    <th class="px-4 py-3 font-semibold text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-mensal" class="text-sm text-gray-700 divide-y divide-gray-50"></tbody>
+                            <tfoot>
+                                <tr class="border-t border-gray-200 font-bold text-gray-800">
+                                    <td class="px-4 py-3">Total geral</td>
+                                    <td class="px-4 py-3 text-center" id="mensal-qtd">0</td>
+                                    <td class="px-4 py-3 text-right" id="mensal-total">R$ 0,00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-100 bg-gray-50/50">
+                    <h3 class="text-lg font-bold text-gray-800">Lançamentos</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                <th class="px-6 py-4 font-semibold">Data</th>
+                                <th class="px-6 py-4 font-semibold">Doador</th>
+                                <th class="px-6 py-4 font-semibold">Descrição</th>
+                                <th class="px-6 py-4 font-semibold">Método</th>
+                                <th class="px-6 py-4 font-semibold text-right">Valor</th>
+                                <th class="px-6 py-4 font-semibold text-right">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-doacoes" class="text-sm text-gray-700 divide-y divide-gray-50"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABA: BRINQUEDOS ================= -->
+        <section id="aba-brinquedos" class="aba hidden">
+            <div class="mb-8 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 font-poppins">Brinquedos</h2>
+                    <p class="text-gray-500 mt-1">Defina a meta e a quantidade atingida de cada brinquedo.</p>
+                </div>
+                <button onclick="adicionarNovoBrinquedo()" class="bg-terra text-white font-bold px-5 py-2.5 rounded-lg hover:bg-terra/90 transition-colors">+ Adicionar Novo Brinquedo</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-1 h-fit">
+                    <h3 id="titulo-form-brinquedo" class="text-lg font-bold text-gray-800 mb-4">Adicionar Brinquedo</h3>
+                    <form id="brinquedo-form" onsubmit="salvarBrinquedo(event)" class="space-y-4">
+                        <input type="hidden" id="brinquedo-id">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                            <input type="text" id="brinquedo-nome" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-terra">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Categoria</label>
+                            <input type="text" id="brinquedo-categoria" placeholder="Ex: Visual / Foco" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-terra">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+                            <textarea id="brinquedo-descricao" rows="3" placeholder="Descreva o brinquedo (opcional)" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-terra"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Imagem (URL ou upload)</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="brinquedo-imagem" placeholder="URL da imagem ou faça upload" class="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-terra">
+                                <label class="px-3 py-2 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap cursor-pointer">
+                                    📤 Upload
+                                    <input type="file" accept="image/*" class="hidden" onchange="uploadImagem(this, 'brinquedo-imagem')">
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Link (URL)</label>
+                            <input type="url" id="brinquedo-link" placeholder="Link para acessar o brinquedo (opcional)" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-terra">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Meta: <span id="brinquedo-meta-valor" class="font-bold text-terra">0</span></label>
+                            <input type="range" min="0" max="100" step="1" id="brinquedo-meta" value="0" oninput="document.getElementById('brinquedo-meta-valor').textContent = this.value" class="w-full accent-terra">
+                            <div class="flex justify-between text-[10px] text-gray-400 mt-1">
+                                <span>0</span><span>50</span><span>100</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="brinquedo-visivel" class="w-4 h-4 text-teal rounded border-gray-300 focus:ring-teal">
+                            <label for="brinquedo-visivel" class="text-sm font-medium text-gray-700">Visível na vitrine pública</label>
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="submit" class="flex-grow bg-terra text-white font-bold py-3 rounded-lg hover:bg-terra/90 transition-colors">Salvar</button>
+                            <button type="button" onclick="limparFormBrinquedo()" class="px-4 py-3 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden lg:col-span-2">
+                    <div class="px-6 py-5 border-b border-gray-100 bg-gray-50/50">
+                        <h3 class="text-lg font-bold text-gray-800">Metas cadastradas</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                    <th class="px-6 py-4 font-semibold">Brinquedo</th>
+                                    <th class="px-6 py-4 font-semibold">Progresso</th>
+                                    <th class="px-6 py-4 font-semibold text-center">Atingidos / Meta</th>
+                                    <th class="px-6 py-4 font-semibold text-center">Visível</th>
+                                    <th class="px-6 py-4 font-semibold text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-brinquedos" class="text-sm text-gray-700 divide-y divide-gray-50"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABA: APOIADORES ================= -->
+        <section id="aba-apoiadores" class="aba hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 font-poppins">Apoiadores</h2>
+                <p class="text-gray-500 mt-1">Quem aparece na seção "Apoiadores" do site público.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-1 h-fit">
+                    <h3 id="titulo-form-apoiador" class="text-lg font-bold text-gray-800 mb-4">Adicionar Apoiador</h3>
+                    <form onsubmit="salvarApoiador(event)" class="space-y-4">
+                        <input type="hidden" id="apoiador-id">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                            <input type="text" id="apoiador-nome" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Função / Descrição</label>
+                            <input type="text" id="apoiador-funcao" placeholder="Ex: Empresa parceira" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Foto / Logo (URL ou upload)</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="apoiador-foto" placeholder="URL da foto ou faça upload" class="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                                <label class="px-3 py-2 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap cursor-pointer">
+                                    📤 Upload
+                                    <input type="file" accept="image/*" class="hidden" onchange="uploadImagem(this, 'apoiador-foto')">
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Ordem de exibição</label>
+                            <input type="number" id="apoiador-ordem" value="0" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="submit" class="flex-grow bg-teal text-white font-bold py-3 rounded-lg hover:bg-teal/90 transition-colors">Salvar</button>
+                            <button type="button" onclick="limparFormApoiador()" class="px-4 py-3 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden lg:col-span-2">
+                    <div class="px-6 py-5 border-b border-gray-100 bg-gray-50/50">
+                        <h3 class="text-lg font-bold text-gray-800">Apoiadores cadastrados</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                    <th class="px-6 py-4 font-semibold">Apoiador</th>
+                                    <th class="px-6 py-4 font-semibold">Função</th>
+                                    <th class="px-6 py-4 font-semibold text-center">Ordem</th>
+                                    <th class="px-6 py-4 font-semibold text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-apoiadores" class="text-sm text-gray-700 divide-y divide-gray-50"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABA: PIX & SITE ================= -->
+        <section id="aba-site" class="aba hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 font-poppins">Pix & Site</h2>
+                <p class="text-gray-500 mt-1">Altere a chave Pix, o QR Code e o endereço de coleta exibidos no site.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-2">
+                    <form onsubmit="salvarConfiguracoes(event)" class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Chave Pix</label>
+                            <input type="text" id="cfg-pix-chave" oninput="atualizarPreviaQr()" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Titular da conta</label>
+                            <input type="text" id="cfg-pix-titular" placeholder="Opcional" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">QR Code (URL da imagem)</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="cfg-pix-qrcode" oninput="atualizarPreviaQr()" placeholder="Deixe vazio para gerar automaticamente pela chave Pix" class="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                                <label class="px-3 py-2 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap cursor-pointer">
+                                    📤 Upload
+                                    <input type="file" accept="image/*" class="hidden" onchange="uploadImagem(this, 'cfg-pix-qrcode')">
+                                </label>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Envie a imagem do QR Code do banco ou cole uma URL.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">QR Code do Site (para folder)</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="cfg-site-qrcode" oninput="atualizarPreviaQrSite()" placeholder="URL do QR Code do site ou deixe vazio para gerar automaticamente" class="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                                <label class="px-3 py-2 rounded-lg border border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap cursor-pointer">
+                                    📤 Upload
+                                    <input type="file" accept="image/*" class="hidden" onchange="uploadImagem(this, 'cfg-site-qrcode')">
+                                </label>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">QR Code que leva ao site da campanha. Use para imprimir no folder.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Instagram da ONG</label>
+                            <input type="text" id="cfg-instagram-ong" placeholder="https://www.instagram.com/aumapiracicaba" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Endereço de coleta</label>
+                            <textarea id="cfg-coleta-endereco" rows="2" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal"></textarea>
+                            <p class="text-xs text-gray-400 mt-1">Use <br> para quebrar a linha.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Observação da coleta</label>
+                            <input type="text" id="cfg-coleta-observacao" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-teal">
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button type="submit" class="bg-teal text-white font-bold px-8 py-3 rounded-lg hover:bg-teal/90 transition-colors">Salvar alterações</button>
+                            <span id="cfg-salvo" class="text-green-bright font-semibold text-sm hidden">✓ Salvo com sucesso!</span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-1 h-fit">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Prévia do QR Code (Pix)</h3>
+                    <div class="w-full aspect-square bg-gray-50 rounded-xl border-2 border-dashed border-teal flex items-center justify-center p-3">
+                        <img id="cfg-qr-previa" src="" alt="Prévia do QR Code" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center">É exatamente assim que aparecerá no site.</p>
+
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 mt-6">Prévia do QR Code (Site)</h3>
+                    <div class="w-full aspect-square bg-gray-50 rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center p-3">
+                        <img id="cfg-site-qr-previa" src="" alt="Prévia do QR Code do Site" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center">QR Code para o folder.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-teal py-6 px-4 text-center text-white mt-auto">
+        <p class="font-light text-xs">© 2026 SensoriAÇÃO — Painel Administrativo</p>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

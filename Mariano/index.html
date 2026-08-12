@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="SensoriAÇÃO: sentir, brincar e incluir - Arrecadação de brinquedos sensoriais para crianças neurodivergentes da AUMA.">
+    <title>SensoriAÇÃO</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sand': '#FFF8F3',
+                        'teal': '#00B4D8',
+                        'terra': '#FF6B35',
+                        'terra-light': '#FF8C5A',
+                        'purple-bright': '#D946EF',
+                        'green-bright': '#10B981',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background: linear-gradient(135deg, #FFF8F3 0%, #FFE5D9 50%, #FFF8F3 100%); }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00B4D8 0%, #FF6B35 50%, #D946EF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-premium {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.4s ease;
+        }
+        .card-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(44, 94, 107, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid #00B4D8;
+            color: #00B4D8;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #00B4D8;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .progress-bar-bg { background-color: #f3f4f6; }
+        .progress-bar-fill { height: 100%; border-radius: 9999px; transition: width 1s ease-in-out; }
+
+        /* Animação do Modal */
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-800 antialiased pt-24 min-h-screen flex flex-col">
+
+    <!-- HEADER MINIMALISTA E PREMIUM COM ÁREA DE LOGIN -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center h-20">
+                <!-- Logo & Branding -->
+                <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-teal to-terra flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 flex-shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold font-poppins text-white">S</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-sm sm:text-lg font-bold font-poppins text-gray-800 tracking-tight group-hover:text-teal transition-colors leading-tight">SensoriAÇÃO</h1>
+                        <p class="text-[10px] sm:text-xs text-gray-500 font-medium mt-0.5">sentir, brincar e incluir</p>
+                    </div>
+                </a>
+
+                <!-- Links de Navegação -->
+                <div id="nav-links" class="hidden md:flex items-center gap-8">
+                    <a href="#projeto" class="text-gray-600 font-medium hover:text-teal transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-teal after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">O Projeto</a>
+                    <a href="#vitrine" class="text-gray-600 font-medium hover:text-teal transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-teal after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">Brinquedos</a>
+                    <a href="#crp" class="text-gray-600 font-medium hover:text-teal transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-teal after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">Sobre a AUMA</a>
+                    <a href="#apoiadores" class="text-gray-600 font-medium hover:text-teal transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-teal after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">Apoiadores</a>
+                </div>
+
+                <!-- Botões de Ação (Login + Doar) -->
+                <div class="flex items-center gap-3 sm:gap-5">
+                    
+                    <!-- Botão de Login (Visível quando deslogado) -->
+                    <button id="btn-login" onclick="abrirLogin()" class="text-xs sm:text-sm font-semibold text-gray-600 hover:text-teal transition-colors px-2 py-2 hidden md:block">
+                        Entrar
+                    </button>
+                    <!-- Ícone de Login para Mobile -->
+                    <button id="btn-login-mobile" onclick="abrirLogin()" class="md:hidden text-gray-600 hover:text-teal p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                    </button>
+
+
+                    <!-- Divisor Visual -->
+                    <div id="nav-divider" class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+
+                    <!-- Botão CTA (Quero Doar) -->
+                    <a id="btn-doar-nav" href="#como-ajudar" class="relative inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-2.5 overflow-hidden font-bold text-white rounded-full shadow-md group bg-gradient-to-br from-terra to-terra-light hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-20"></span>
+                        <span class="relative text-xs sm:text-sm">Quero Doar</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MODAL DE LOGIN -->
+    <div id="login-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-gray-900/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative modal-enter">
+            <!-- Botão fechar -->
+            <button onclick="fecharLogin()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 mx-auto bg-gradient-to-tr from-teal to-terra rounded-full flex items-center justify-center mb-4 shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold font-poppins text-gray-800">Acesso Restrito</h2>
+                <p class="text-sm text-gray-500 mt-1">Faça login para acessar o painel administrativo.</p>
+            </div>
+
+            <form id="login-form" onsubmit="fazerLogin(event)" class="space-y-5">
+                <!-- Mensagem de Erro (Oculta por padrão) -->
+                <div id="login-error" class="hidden bg-red-50 text-red-600 text-sm p-3 rounded-lg border border-red-200 text-center font-medium">
+                    Usuário ou senha incorretos.
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Usuário</label>
+                    <input type="text" id="usernameInput" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all" placeholder="Digite seu usuário" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Senha</label>
+                    <input type="password" id="passwordInput" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all" placeholder="••••••••" required>
+                </div>
+                <button type="submit" id="btn-entrar" class="w-full btn-primary py-3.5 rounded-xl text-white font-bold text-lg shadow-md mt-4 disabled:opacity-60">
+                    Acessar Painel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN WRAPPER: Controla o que aparece na tela -->
+    <div id="main-content" class="flex-grow flex flex-col">
+        
+        <!-- PÁGINA INICIAL (LANDING PAGE) -->
+        <div id="landing-page">
+            <!-- HERO SECTION -->
+            <section class="py-8 sm:py-16 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+                    <article class="space-y-6 text-center lg:text-left order-2 lg:order-1">
+                        <h2 class="text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight font-poppins">
+                            <span class="gradient-text block mb-1 sm:mb-2">SensoriAÇÃO</span>
+                            <span class="text-teal">sentir, brincar e incluir</span>
+                        </h2>
+                        
+                        <p class="text-base sm:text-lg text-gray-700 font-medium">
+                            Neste Dia das Crianças, transforme a brincadeira em desenvolvimento e inclusão.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-gray-600 font-light text-justify lg:text-left">
+                            Muitas vezes, brinquedos convencionais não atendem às necessidades específicas do desenvolvimento de crianças com Transtorno do Espectro Autista (TEA). Nossa campanha nasce com o propósito de arrecadar brinquedos sensoriais e presentear crianças e adolescentes atendidos na Associação de Pais e Amigos dos Autistas de Piracicaba (AUMA).
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+                            <a href="#projeto" class="btn-secondary w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-center">Saiba Mais</a>
+                            <a href="#como-ajudar" class="btn-primary w-full sm:w-auto px-6 py-3.5 rounded-xl text-white font-semibold text-center">quero doar</a>
+                        </div>
+
+                        <div class="inline-flex items-start sm:items-center gap-2 bg-white/60 px-4 py-3 rounded-lg border border-terra/20 text-left">
+                            <span class="text-terra font-bold mt-0.5 sm:mt-0">✓</span>
+                            <span class="text-xs sm:text-sm font-medium text-gray-700">100% das doações em prol do desenvolvimento</span>
+                        </div>
+                    </article>
+
+                    <figure class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white order-1 lg:order-2 h-64 sm:h-80 lg:h-[450px]">
+                        <img src="pics/img_7.jpeg" alt="Crianças brincando de forma inclusiva" class="w-full h-full object-cover">
+                    </figure>
+                </div>
+            </section>
+
+            <!-- CONCEITOS -->
+            <section id="projeto" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white/40">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-bold text-center text-teal font-poppins mb-8 sm:mb-12">
+                        Autismo x Brinquedos Sensoriais
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                        <article class="card-premium p-6 sm:p-8 rounded-2xl border-t-4 border-terra">
+                            <h3 class="text-xl sm:text-2xl font-bold text-terra mb-3 sm:mb-4 font-poppins">O que é Autismo?</h3>
+                            <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                                O Transtorno do Espectro Autista (TEA) é uma condição do neurodesenvolvimento que afeta principalmente a comunicação, a interação social e a forma como a pessoa percebe os estímulos ao seu redor. Assim como temos traços genéticos diferentes, nossos circuitos neurais também se organizam de maneiras únicas. Isso significa que o cérebro autista processa informações, sons, luzes, texturas e emoções por rotas diferentes da maioria. Entender esse conceito é trocar a ideia de "corrigir", pela ideia de respeitar e incluir.
+                            </p>
+                            <div class="bg-terra/10 p-3 sm:p-4 rounded-lg">
+                                <p class="text-xs sm:text-sm text-gray-800 font-medium">
+                                    Esse grupo engloba: Autismo (TEA), TDAH, Dislexia, Dispraxia, entre outras condições neurobiológicas.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="card-premium p-6 sm:p-8 rounded-2xl border-t-4 border-teal">
+                            <h3 class="text-xl sm:text-2xl font-bold text-teal mb-3 sm:mb-4 font-poppins">O que são Brinquedos Sensoriais?</h3>
+                            <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                                São brinquedos desenvolvidos especialmente para estimular os sentidos — como o tato, a visão, a audição e a coordenação motora. Em pessoas autistas, o sistema de filtragem tátil, visual e auditivo costuma funcionar de forma hipersensível (muito intenso) ou hipossensível (pouco intenso).
+                            </p>
+                            <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
+                                É aí que a magia acontece: brinquedos sensoriais oferecem estímulos táteis e proprioceptivos controlados. Eles ajudam o sistema nervoso central a regular o nível de alerta do cérebro, reduzindo a sobrecarga de estímulos externos, diminuindo a ansiedade e promovendo o foco.
+                            </p>
+                            <div class="bg-teal/10 p-3 sm:p-4 rounded-lg">
+                                <p class="text-xs sm:text-sm text-gray-800 font-medium">
+                                    Não são apenas brinquedos — são ferramentas de autorregulação que preparam o cérebro para aprender, explorar e se conectar com o mundo.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VITRINE DE BRINQUEDOS -->
+            <section id="vitrine" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-bold text-center text-terra font-poppins mb-3">
+                        Arrecadação Brinquedos
+                    </h2>
+                    <p class="text-center text-gray-600 font-light max-w-2xl mx-auto mb-10 text-sm sm:text-base">
+                        Confira abaixo a lista de brinquedos sensoriais que fazem parte da nossa campanha e acompanhe as metas em tempo real.
+Dica: se for comprar pela internet para doação, insira o endereço do ponto de arrecadação.
+Avenida Piracicamirim, 3039 - Bloco 3, apto 104, Gabriel Mariano.
+                    </p>
+
+                    <div id="vitrine-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <p class="col-span-full text-center text-gray-400 py-10">Carregando brinquedos...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONHECENDO A AUMA -->
+            <section id="crp" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white/40">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-bold text-center text-teal font-poppins mb-8 sm:mb-12">
+                       Conheça a AUMA
+                    </h2>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+                        <article class="card-premium p-6 sm:p-8 rounded-2xl border-t-4 border-teal space-y-4">
+                            <p class="text-sm sm:text-base text-gray-700 font-light text-justify">
+                                Há duas décadas construindo uma história na cidade de Piracicaba, o que nasceu com a união de pais e amigos em busca de uma assistência especializada, hoje se consolidou como uma referência no suporte, no acolhimento e no desenvolvimento de crianças, adolescentes e adultos com Transtorno do Espectro Autista (TEA). Realizam atividades para estimular a independência, a comunicação e as habilidades sociais através de uma equipe multidisciplinar que trabalha lado a lado para garantir que cada um se desenvolva respeitando suas individualidades. A instituição também oferece suporte familiar por meio de escuta ativa e orientações para os pais e cuidadores.
+                            </p>
+                            <p class="text-sm sm:text-base text-gray-700 font-light text-justify">
+                                Como uma entidade filantrópica, sem fins lucrativos e de caráter assistencial, a AUMA sustenta suas operações por meio de um modelo híbrido. Isso significa que combina recursos públicos, parcerias, eventos comunitários e doações para manter os atendimentos gratuitos para famílias em situação de vulnerabilidade.
+                            </p>
+                            <p class="text-sm sm:text-base text-gray-700 font-light text-justify">
+                                Sabendo que terapias sensoriais fazem uma diferença gigantesca no atendimento, a campanha SensoriAÇÃO nasceu para levar esse desenvolvimento para dentro de casa. Cada brinquedo sensorial arrecadado nesta campanha será entregue para as crianças e adolescentes atendidos na instituição terem em seu lar. Assim, o estímulo, a regulação emocional e a diversão continuam no ambiente familiar.
+                            </p>
+
+                            <div class="bg-teal/10 p-4 rounded-lg flex items-start gap-3">
+                                <span class="text-xl leading-none mt-0.5">📍</span>
+                                <p class="text-xs sm:text-sm text-gray-800 font-medium">
+                                    A AUMA se localiza na Rua Leontino Boscariol, 70 - Morumbi, Piracicaba - SP.
+                                </p>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="http://www.aumapiracicaba.org.br/" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-block px-6 py-3 rounded-xl font-semibold text-center">
+                                    Para saber mais, acesse: aumapiracicaba.org.br
+                                </a>
+                                <a href="https://www.instagram.com/aumapiracicaba?igsh=NTgydGkwbHZnZnlw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-bright to-pink-500 text-white px-6 py-3 rounded-xl font-semibold text-center hover:shadow-lg transition-all">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.71-2.13 1.38S.95 3.35.65 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.71 1.46 1.38 2.13s.78 1.07 1.38 1.38c.76.38 1.64.58 2.91.64C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.71 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.38-.76.58-1.64.64-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.71-1.46-1.38-2.13s-.78-1.07-1.38-1.38c-.76-.38-1.64-.58-2.91-.64C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.45a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+                                    <span>Instagram</span>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- MAPA -->
+                        <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white h-80 sm:h-96 lg:h-full lg:min-h-[500px]">
+                            <iframe
+                                title="Mapa da AUMA - Associação de Pais e Amigos dos Autistas de Piracicaba"
+                                src="https://www.google.com/maps?q=Rua+Leontino+Boscariol,+70+-+Morumbi,+Piracicaba+-+SP&output=embed"
+                                class="w-full h-full border-0"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ESCOLHA COMO AJUDAR (PIX E PONTOS DE COLETA) -->
+            <section id="como-ajudar" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal/10 to-terra/10 border-t border-b border-white/50">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-teal font-poppins mb-10">Escolha como ajudar:</h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        
+                        <!-- Pontos de Coleta (vem primeiro) -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-terra/20 relative overflow-hidden flex flex-col justify-center">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-terra/10 rounded-bl-full -z-0"></div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 font-poppins mb-6 relative z-10">Pontos de Coleta:</h3>
+                            
+                            <div class="bg-sand rounded-xl p-6 border border-gray-200 relative z-10 flex flex-col justify-center h-full">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="text-terra text-2xl mt-1">📦</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800 text-lg mb-1">Endereço de Entrega</p>
+                                        <p id="coletaEndereco" class="text-gray-700 leading-relaxed">
+                                            Avenida Piracicamirim, nº 3039<br>
+                                            Bloco 3, apartamento 104
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-terra/10 p-4 rounded-lg mt-4 border border-terra/20">
+                                    <p id="coletaObservacao" class="text-sm font-bold text-terra">OBS: Pedir para entregar com o nome de Gabriel Mariano</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doação via PIX -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-teal/20 relative overflow-hidden flex flex-col justify-center">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-teal/10 rounded-bl-full -z-0"></div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 font-poppins mb-2 relative z-10">Doação via Pix:</h3>
+                            <p class="text-sm text-gray-600 mb-8 font-medium relative z-10">100% do valor arrecadado será revertido em briquedos sensoriais</p>
+                            
+                            <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 relative z-10">
+                                <!-- QR Code -->
+                                <div class="w-40 h-40 bg-gray-100 p-2 rounded-xl border-2 border-dashed border-teal flex items-center justify-center flex-shrink-0">
+                                    <img id="pixQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=sensoriacao@gmail.com" alt="QR Code do PIX" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
+                                </div>
+                                
+                                <div class="text-left space-y-4 w-full">
+                                    <div>
+                                        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Chave Pix:</p>
+                                        <div class="flex flex-col sm:flex-row gap-2">
+                                            <input type="text" id="pixKey" value="sensoriacao@gmail.com" class="w-full bg-sand border border-gray-300 rounded-lg px-3 py-3 sm:px-4 text-center sm:text-left text-gray-800 font-bold focus:outline-none focus:border-teal text-sm sm:text-base" readonly>
+                                            <button onclick="copyPix()" class="bg-teal hover:bg-teal/90 text-white px-6 py-3 rounded-lg font-bold transition-colors w-full sm:w-auto">
+                                                Copiar
+                                            </button>
+                                        </div>
+                                        <p id="copyMsg" class="text-green-600 text-sm font-medium mt-2 hidden text-center sm:text-left">✓ Chave copiada com sucesso!</p>
+                                        <p id="pixTitular" class="text-xs text-gray-500 mt-2 hidden"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- APOIADORES -->
+            <section id="apoiadores" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-bold text-center text-teal font-poppins mb-3">
+                        Apoiadores
+                    </h2>
+                    <p class="text-center text-gray-600 font-light max-w-2xl mx-auto mb-10 text-sm sm:text-base">
+                        Quem caminha junto com a campanha SensoriAÇÃO para transformar brincadeira em inclusão.
+                    </p>
+
+                    <div id="apoiadores-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                        <p class="col-span-full text-center text-gray-400 py-10">Carregando apoiadores...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- FIM DA LANDING PAGE -->
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal py-8 px-4 text-center text-white mt-auto">
+        <p class="font-light text-xs sm:text-sm">© 2026 SensoriAÇÃO. Todos os direitos reservados a Carlos Gavasso.</p>
+        <p class="font-light text-[10px] sm:text-xs mt-2 opacity-80">100% das doações são destinadas às crianças neurodivergentes.</p>
+        <div class="flex justify-center items-center gap-4 mt-4">
+            <a id="instagram-footer" href="https://www.instagram.com/sensoriacao?igsh=MWNkYXpud285NzB3YQ%3D%3D" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.71-2.13 1.38S.95 3.35.65 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.71 1.46 1.38 2.13s.78 1.07 1.38 1.38c.76.38 1.64.58 2.91.64C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.71 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.38-.76.58-1.64.64-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.71-1.46-1.38-2.13s-.78-1.07-1.38-1.38c-.76-.38-1.64-.58-2.91-.64C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.45a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+            </a>
+            <span class="text-xs opacity-60">Siga nossa campanha no Instagram</span>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a id="whatsapp-btn" href="https://wa.me/5519998566138?text=Olá,%20Gabriel!%20Gostaria%20de%20ajudar%20na%20Campanha%20SensoriAÇÃO!" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-3 sm:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-40 flex items-center justify-center group">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.383-.058c.104-.124.453-.525.576-.705.123-.181.246-.151.405-.087l1.002.47c.159.087.265.13.304.202.039.072.039.417-.105.822z"/>
+        </svg>
+    </a>
+
+    <!-- INSTAGRAM FLUTUANTE -->
+    <a id="instagram-btn" href="https://www.instagram.com/sensoriacao?igsh=MWNkYXpud285NzB3YQ%3D%3D" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-20 sm:right-24 bg-gradient-to-r from-purple-bright to-pink-500 text-white p-3 sm:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-40 flex items-center justify-center group">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.71-2.13 1.38S.95 3.35.65 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.71 1.46 1.38 2.13s.78 1.07 1.38 1.38c.76.38 1.64.58 2.91.64C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.71 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.38-.76.58-1.64.64-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.71-1.46-1.38-2.13s-.78-1.07-1.38-1.38c-.76-.38-1.64-.58-2.91-.64C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.45a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/>
+        </svg>
+    </a>
+
+    <script src="supabase-config.js"></script>
+    <script src="site.js"></script>
+    <script>
+        // SCRIPT 1: COPIAR CHAVE PIX
+        function copyPix() {
+            var copyText = document.getElementById("pixKey");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+
+            var msg = document.getElementById("copyMsg");
+            msg.classList.remove("hidden");
+            setTimeout(function(){
+                msg.classList.add("hidden");
+            }, 3000);
+        }
+
+        // SCRIPT 2: LOGIN DO ADMINISTRADOR (validado no Supabase)
+        function abrirLogin() {
+            document.getElementById("login-modal").classList.remove("hidden");
+            document.getElementById("login-modal").classList.add("flex");
+        }
+
+        function fecharLogin() {
+            document.getElementById("login-modal").classList.add("hidden");
+            document.getElementById("login-modal").classList.remove("flex");
+            document.getElementById("login-error").classList.add("hidden");
+            document.getElementById("login-form").reset();
+        }
+
+        function mostrarErroLogin(texto) {
+            const erro = document.getElementById("login-error");
+            erro.textContent = texto;
+            erro.classList.remove("hidden");
+        }
+
+        async function fazerLogin(event) {
+            event.preventDefault();
+
+            const usuario = document.getElementById("usernameInput").value.trim();
+            const senha = document.getElementById("passwordInput").value;
+            const botao = document.getElementById("btn-entrar");
+
+            botao.disabled = true;
+            botao.textContent = "Verificando...";
+            document.getElementById("login-error").classList.add("hidden");
+
+            try {
+                const valido = await sb.rpc('verificar_login', { p_usuario: usuario, p_senha: senha });
+                if (valido === true) {
+                    salvarSessao(usuario);
+                    window.location.href = "admin.html";
+                    return;
+                }
+                mostrarErroLogin("Usuário ou senha incorretos.");
+            } catch (e) {
+                if (String(e.message).includes("PGRST202")) {
+                    mostrarErroLogin("Banco de dados ainda não configurado: execute o arquivo supabase_setup.sql no SQL Editor do Supabase.");
+                } else {
+                    mostrarErroLogin("Não foi possível validar o login. Detalhe: " + e.message);
+                }
+            } finally {
+                botao.disabled = false;
+                botao.textContent = "Acessar Painel";
+            }
+        }
+    </script>
+</body>
+</html>
+</parameter>
+</write_to_file>
