@@ -505,21 +505,11 @@ async function excluirApoiador(id) {
 function preencherConfiguracoes() {
     document.getElementById('cfg-pix-chave').value = configuracoes.pix_chave || '';
     document.getElementById('cfg-pix-titular').value = configuracoes.pix_titular || '';
-    document.getElementById('cfg-pix-qrcode').value = configuracoes.pix_qrcode || '';
     document.getElementById('cfg-site-qrcode').value = configuracoes.site_qrcode || '';
     document.getElementById('cfg-instagram-ong').value = configuracoes.instagram_ong || '';
     document.getElementById('cfg-coleta-endereco').value = configuracoes.coleta_endereco || '';
     document.getElementById('cfg-coleta-observacao').value = configuracoes.coleta_observacao || '';
-    atualizarPreviaQr();
     atualizarPreviaQrSite();
-}
-
-function atualizarPreviaQr() {
-    const url = document.getElementById('cfg-pix-qrcode').value.trim();
-    const chave = document.getElementById('cfg-pix-chave').value.trim();
-    document.getElementById('cfg-qr-previa').src = url
-        ? url
-        : 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(chave);
 }
 
 function atualizarPreviaQrSite() {
@@ -538,7 +528,6 @@ async function salvarConfiguracoes(evento) {
     const valores = {
         pix_chave: document.getElementById('cfg-pix-chave').value.trim(),
         pix_titular: document.getElementById('cfg-pix-titular').value.trim(),
-        pix_qrcode: document.getElementById('cfg-pix-qrcode').value.trim(),
         site_qrcode: document.getElementById('cfg-site-qrcode').value.trim(),
         instagram_ong: document.getElementById('cfg-instagram-ong').value.trim(),
         coleta_endereco: document.getElementById('cfg-coleta-endereco').value.trim(),
@@ -632,9 +621,6 @@ async function uploadImagem(input, campoId) {
     try {
         const url = await sb.upload('imagens', nome, arquivo);
         campo.value = url;
-        if (campoId === 'cfg-pix-qrcode') {
-            atualizarPreviaQr();
-        }
         if (campoId === 'cfg-site-qrcode') {
             atualizarPreviaQrSite();
         }

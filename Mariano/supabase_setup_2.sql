@@ -41,7 +41,6 @@ create table if not exists public.configuracoes (
 
 insert into public.configuracoes (chave, valor) values
     ('pix_chave', 'sensoriacao@gmail.com'),
-    ('pix_qrcode', ''),
     ('pix_titular', ''),
     ('site_qrcode', ''),
     ('instagram_ong', 'https://www.instagram.com/aumapiracicaba?igsh=NTgydGkwbHZnZnlw'),

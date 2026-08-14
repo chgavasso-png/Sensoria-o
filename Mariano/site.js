@@ -116,14 +116,6 @@ async function carregarConfiguracoes() {
         campoPix.value = cfg.pix_chave;
     }
 
-    const qr = document.getElementById('pixQrCode');
-    if (qr) {
-        qr.src = cfg.pix_qrcode
-            ? cfg.pix_qrcode
-            : 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' +
-              encodeURIComponent(cfg.pix_chave || (campoPix ? campoPix.value : ''));
-    }
-
     const titular = document.getElementById('pixTitular');
     if (titular && cfg.pix_titular) {
         titular.textContent = 'Titular: ' + cfg.pix_titular;

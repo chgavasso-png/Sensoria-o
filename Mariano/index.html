@@ -230,7 +230,7 @@
                             </p>
                             <div class="bg-terra/10 p-3 sm:p-4 rounded-lg">
                                 <p class="text-xs sm:text-sm text-gray-800 font-medium">
-                                    Entender esse conceito é trocar a ideia de “corrigir”, pela ideia de respeitar e incluir.
+                                    Entender esse conceito é trocar a ideia de "corrigir", pela ideia de respeitar e incluir.
                                 </p>
                             </div>
                         </article>
@@ -261,7 +261,8 @@
                     </h2>
                     <p class="text-center text-gray-600 font-light max-w-2xl mx-auto mb-10 text-sm sm:text-base">
                         Confira abaixo a lista de brinquedos sensoriais que fazem parte da nossa campanha e acompanhe as metas em tempo real.
-Dica: se for comprar pela internet para doação, insira o endereço do ponto de arrecadação.
+Dica: Caso compre na loja de sua preferência 
+Se preferir comprar o brinquedo em outra loja / site, é só fazer a entrega no endereço citado acima. Use o nome Gabriel Mariano para identificação.
 Avenida Piracicamirim, 3039 - Bloco 3, apto 104, Gabriel Mariano.
                     </p>
 
@@ -369,24 +370,17 @@ Avenida Piracicamirim, 3039 - Bloco 3, apto 104, Gabriel Mariano.
                             <h3 class="text-2xl font-bold text-gray-800 font-poppins mb-2 relative z-10">Doação via Pix:</h3>
                             <p class="text-sm text-gray-600 mb-8 font-medium relative z-10">100% do valor arrecadado será revertido em brinquedos sensoriais</p>
                             
-                            <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 relative z-10">
-                                <!-- QR Code -->
-                                <div class="w-40 h-40 bg-gray-100 p-2 rounded-xl border-2 border-dashed border-teal flex items-center justify-center flex-shrink-0">
-                                    <img id="pixQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=sensoriacao@gmail.com" alt="QR Code do PIX" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
-                                </div>
-                                
-                                <div class="text-left space-y-4 w-full">
-                                    <div>
-                                        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Chave Pix:</p>
-                                        <div class="flex flex-col sm:flex-row gap-2">
-                                            <input type="text" id="pixKey" value="sensoriacao@gmail.com" class="w-full bg-sand border border-gray-300 rounded-lg px-3 py-3 sm:px-4 text-center sm:text-left text-gray-800 font-bold focus:outline-none focus:border-teal text-sm sm:text-base" readonly>
-                                            <button onclick="copyPix()" class="bg-teal hover:bg-teal/90 text-white px-6 py-3 rounded-lg font-bold transition-colors w-full sm:w-auto">
-                                                Copiar
-                                            </button>
-                                        </div>
-                                        <p id="copyMsg" class="text-green-600 text-sm font-medium mt-2 hidden text-center sm:text-left">✓ Chave copiada com sucesso!</p>
-                                        <p id="pixTitular" class="text-xs text-gray-500 mt-2 hidden"></p>
+                            <div class="relative z-10">
+                                <div>
+                                    <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Chave Pix:</p>
+                                    <div class="flex flex-col sm:flex-row gap-2">
+                                        <input type="text" id="pixKey" value="sensoriacao@gmail.com" class="w-full bg-sand border border-gray-300 rounded-lg px-3 py-3 sm:px-4 text-center sm:text-left text-gray-800 font-bold focus:outline-none focus:border-teal text-sm sm:text-base" readonly>
+                                        <button onclick="copyPix()" class="bg-teal hover:bg-teal/90 text-white px-6 py-3 rounded-lg font-bold transition-colors w-full sm:w-auto">
+                                            Copiar
+                                        </button>
                                     </div>
+                                    <p id="copyMsg" class="text-green-600 text-sm font-medium mt-2 hidden text-center sm:text-left">✓ Chave copiada com sucesso!</p>
+                                    <p id="pixTitular" class="text-xs text-gray-500 mt-2 hidden"></p>
                                 </div>
                             </div>
                         </div>
@@ -507,5 +501,3 @@ Avenida Piracicamirim, 3039 - Bloco 3, apto 104, Gabriel Mariano.
     </script>
 </body>
 </html>
-</parameter>
-</write_to_file>
