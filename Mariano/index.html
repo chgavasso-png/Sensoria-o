@@ -86,6 +86,143 @@
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+
+        /* ===== COUNTDOWN INFANTIL ===== */
+        .countdown-wrapper {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE5D9 50%, #FFF8F3 100%);
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .countdown-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .countdown-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF6B35 0%, #D946EF 50%, #00B4D8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+        }
+        .countdown-box {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1rem 0.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .countdown-box:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+        .countdown-box::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 8px;
+            background: inherit;
+            border-radius: 9999px;
+            opacity: 0.3;
+        }
+        .countdown-number {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .countdown-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent),
+                        linear-gradient(135deg, var(--balloon-color) 0%, var(--balloon-color-dark) 100%);
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1);
+        }
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: rgba(0,0,0,0.2);
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 15px;
+            height: 20px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--confetti-color);
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(400px) rotate(360deg); }
+        }
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5rem;
+            border: 3px solid currentColor;
+            opacity: 0;
+            animation: pulse 2s ease-out infinite;
+        }
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+        }
+        @media (min-width: 640px) {
+            .countdown-number { font-size: 2.5rem; }
+            .countdown-label { font-size: 0.875rem; }
+        }
     </style>
 </head>
 <body class="font-inter text-gray-800 antialiased pt-24 min-h-screen flex flex-col">
@@ -183,6 +320,59 @@
         <div id="landing-page">
             <!-- HERO SECTION -->
             <section class="py-8 sm:py-16 px-4 sm:px-6 lg:px-8">
+                <!-- COUNTDOWN INFANTIL -->
+                <div class="max-w-4xl mx-auto mb-12 sm:mb-16">
+                    <div class="countdown-wrapper">
+                        <!-- Balões decorativos -->
+                        <div class="balloon" style="--balloon-color: #FF6B35; --balloon-color-dark: #E55A2B; top: 10%; left: 5%; animation-delay: 0s;"></div>
+                        <div class="balloon" style="--balloon-color: #00B4D8; --balloon-color-dark: #0096B8; top: 15%; right: 8%; animation-delay: 1s;"></div>
+                        <div class="balloon" style="--balloon-color: #D946EF; --balloon-color-dark: #B936DB; bottom: 20%; left: 10%; animation-delay: 2s;"></div>
+                        <div class="balloon" style="--balloon-color: #10B981; --balloon-color-dark: #0D9668; bottom: 15%; right: 5%; animation-delay: 3s;"></div>
+                        
+                        <!-- Confetes -->
+                        <div class="confetti" style="--confetti-color: #FF6B35; top: 0; left: 20%; animation-duration: 3s; animation-delay: 0s;"></div>
+                        <div class="confetti" style="--confetti-color: #00B4D8; top: 0; left: 40%; animation-duration: 4s; animation-delay: 1s;"></div>
+                        <div class="confetti" style="--confetti-color: #D946EF; top: 0; left: 60%; animation-duration: 3.5s; animation-delay: 0.5s;"></div>
+                        <div class="confetti" style="--confetti-color: #10B981; top: 0; left: 80%; animation-duration: 4.5s; animation-delay: 1.5s;"></div>
+                        
+                        <div class="relative z-10 text-center">
+                            <h2 class="countdown-title text-2xl sm:text-3xl md:text-4xl mb-2">
+                                🎉 Contagem Regressiva 🎉
+                            </h2>
+                            <p class="text-gray-600 font-medium text-sm sm:text-base mb-6">
+                                Faltam poucos dias para o Dia das Crianças!
+                            </p>
+                            
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
+                                <div class="countdown-box border-terra text-terra">
+                                    <div class="pulse-ring text-terra"></div>
+                                    <div class="countdown-number" id="countdown-days">00</div>
+                                    <div class="countdown-label">Dias</div>
+                                </div>
+                                <div class="countdown-box border-teal text-teal">
+                                    <div class="pulse-ring text-teal" style="animation-delay: 0.5s;"></div>
+                                    <div class="countdown-number" id="countdown-hours">00</div>
+                                    <div class="countdown-label">Horas</div>
+                                </div>
+                                <div class="countdown-box border-purple-bright text-purple-bright">
+                                    <div class="pulse-ring text-purple-bright" style="animation-delay: 1s;"></div>
+                                    <div class="countdown-number" id="countdown-minutes">00</div>
+                                    <div class="countdown-label">Minutos</div>
+                                </div>
+                                <div class="countdown-box border-green-bright text-green-bright">
+                                    <div class="pulse-ring text-green-bright" style="animation-delay: 1.5s;"></div>
+                                    <div class="countdown-number" id="countdown-seconds">00</div>
+                                    <div class="countdown-label">Segundos</div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs sm:text-sm text-gray-500 mt-6 font-medium">
+                                📅 07 de Outubro de 2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
                     <article class="space-y-6 text-center lg:text-left order-2 lg:order-1">
                         <h2 class="text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight font-poppins">
@@ -226,8 +416,9 @@
                         <article class="card-premium p-6 sm:p-8 rounded-2xl border-t-4 border-terra">
                             <h3 class="text-xl sm:text-2xl font-bold text-terra mb-3 sm:mb-4 font-poppins">O que é Autismo?</h3>
                             <p class="text-sm sm:text-base text-gray-700 font-light mb-4">
-                                O Transtorno do Espectro Autista (TEA) é uma condição do neurodesenvolvimento que afeta principalmente a comunicação, a interação social e a forma como a pessoa percebe os estímulos ao seu redor. Assim como temos traços genéticos diferentes, nossos circuitos neurais também se organizam de maneiras únicas. Isso significa que o cérebro autista processa informações, sons, luzes, texturas e emoções por rotas diferentes da maioria.
-                            </p>
+O Transtorno do Espectro Autista (TEA) é uma condição do neurodesenvolvimento que afeta principalmente a comunicação, a interação social e o processamento dos estímulos externos. Assim como temos traços genéticos diferentes, nossos circuitos neurais também se organizam de maneiras únicas. Isso significa que o cérebro autista processa informações, sons, luzes, texturas e emoções por rotas diferentes da maioria.  
+Mas o que significa a palavra “espectro” na prática?  
+Significa que o desenvolvimento não afeta todas as pessoas da mesma maneira. Assim, cada indivíduo precisa de uma intervenção personalizada de acordo com suas necessidades.                            </p>
                             <div class="bg-terra/10 p-3 sm:p-4 rounded-lg">
                                 <p class="text-xs sm:text-sm text-gray-800 font-medium">
                                     Entender esse conceito é trocar a ideia de "corrigir", pela ideia de respeitar e incluir.
@@ -446,7 +637,36 @@
             }, 3000);
         }
 
-        // SCRIPT 2: LOGIN DO ADMINISTRADOR (validado no Supabase)
+        // SCRIPT 2: COUNTDOWN INFANTIL
+        function atualizarCountdown() {
+            const dataAlvo = new Date('2026-10-07T00:00:00-03:00').getTime();
+            const agora = new Date().getTime();
+            const diferenca = dataAlvo - agora;
+
+            if (diferenca < 0) {
+                document.getElementById('countdown-days').textContent = '00';
+                document.getElementById('countdown-hours').textContent = '00';
+                document.getElementById('countdown-minutes').textContent = '00';
+                document.getElementById('countdown-seconds').textContent = '00';
+                return;
+            }
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown-days').textContent = String(dias).padStart(2, '0');
+            document.getElementById('countdown-hours').textContent = String(horas).padStart(2, '0');
+            document.getElementById('countdown-minutes').textContent = String(minutos).padStart(2, '0');
+            document.getElementById('countdown-seconds').textContent = String(segundos).padStart(2, '0');
+        }
+
+        // Atualiza o countdown a cada segundo
+        setInterval(atualizarCountdown, 1000);
+        atualizarCountdown(); // Chama imediatamente para não esperar 1 segundo
+
+        // SCRIPT 3: LOGIN DO ADMINISTRADOR (validado no Supabase)
         function abrirLogin() {
             document.getElementById("login-modal").classList.remove("hidden");
             document.getElementById("login-modal").classList.add("flex");
